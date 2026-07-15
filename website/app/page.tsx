@@ -132,7 +132,24 @@ export default function Home() {
           <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p><b>↗</b></article>)}</div>
         </section>
 
-        <section className="statement"><img src="/media/editorial-wide.jpg" alt="Crimson boudoir editorial" /><div><p className="eyebrow">The promise</p><blockquote>“You never had to<br />stop being you.”</blockquote><p>For everyone who has ever believed they had to become someone else in order to belong.</p></div></section>
+        <section className="statement">
+          <img src="/media/editorial-wide.jpg" alt="Crimson boudoir editorial" />
+          <div className="statement-content">
+            <p className="eyebrow">The Promise</p>
+            <blockquote>
+              <strong>“We do not create to perform an identity.</strong>
+              <strong>We create to express one.”</strong>
+            </blockquote>
+            <p className="statement-belonging">
+              <span>For everyone who has ever believed they had to become someone else in order to belong…</span>
+              <em>You never had to<br />stop being you.</em>
+            </p>
+            <p className="statement-release">
+              Devoid Media isn’t to help <em>find</em> something lost.<br />
+              It’s to help <em>release</em> something that’s never been let <em>free</em>.
+            </p>
+          </div>
+        </section>
 
         <section className="contact" id="contact">
           <div className="contact-intro"><p className="eyebrow">05 / Collaborate</p><h2>Bring me the idea<br />you can’t shake.</h2><p>Editorials, campaigns, modeling, content partnerships, photography, writing, and work that does not fit neatly into a category.</p><a href="mailto:socials@devoidmediallc.com">socials@devoidmediallc.com</a></div>

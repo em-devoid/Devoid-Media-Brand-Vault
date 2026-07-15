@@ -1,0 +1,86 @@
+.statement {
+  min-height: 100vh;
+}
+
+.statement > .statement-content {
+  width: min(1320px, 100%);
+  padding: 7rem 3rem;
+}
+
+.statement .eyebrow {
+  margin: 0;
+}
+
+.statement blockquote {
+  max-width: 1280px;
+  margin: 2rem auto 2.5rem;
+  font-size: clamp(3.1rem, 5.8vw, 6.4rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.statement blockquote strong {
+  display: block;
+  font-weight: 700;
+}
+
+.statement-belonging,
+.statement-release {
+  max-width: 900px;
+  margin-inline: auto;
+  color: #c5babe;
+  text-wrap: balance;
+}
+
+.statement-belonging span,
+.statement-belonging em {
+  display: block;
+}
+
+.statement-belonging em {
+  margin-top: 0.8rem;
+  color: #eee7e9;
+  font: italic 1.35rem/1.35 var(--editorial);
+}
+
+.statement-release {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.statement-release em {
+  color: #eee7e9;
+  font-family: var(--editorial);
+  font-size: 1.12em;
+}
+
+@media (max-width: 580px) {
+  .statement {
+    min-height: auto;
+  }
+
+  .statement > .statement-content {
+    padding: 6rem 1.5rem;
+  }
+
+  .statement blockquote {
+    margin: 1.6rem auto 2.2rem;
+    font-size: clamp(2.55rem, 12vw, 3.35rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .statement-belonging em {
+    font-size: 1.2rem;
+  }
+
+  .statement-release {
+    margin-top: 1.7rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+}

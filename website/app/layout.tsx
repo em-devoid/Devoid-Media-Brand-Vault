@@ -6,6 +6,7 @@ import "./hero-heading.css";
 import "./section-headings.css";
 import "./uppercase-type.css";
 import "./card-headings.css";
+import "./statement-copy.css";
 
 export const metadata: Metadata = {
   title: "Devoid Media — Art Without Apology",
