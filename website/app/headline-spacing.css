@@ -1,0 +1,44 @@
+.philosophy-copy {
+  min-width: 0;
+}
+
+.philosophy-copy > .eyebrow {
+  margin: 0;
+}
+
+.philosophy h2 {
+  max-width: 100%;
+  margin: 3rem 0 5rem;
+  font-family: "Ghosthey", var(--serif);
+  font-size: clamp(3.25rem, 5vw, 6.5rem);
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.philosophy h2 br {
+  display: none;
+}
+
+.philosophy h2 em {
+  display: block;
+  margin-top: 0.14em;
+  font-family: "Ghosthey", var(--serif);
+  font-style: italic;
+  line-height: 1.06;
+}
+
+@media (max-width: 900px) {
+  .philosophy h2 {
+    margin-top: 2.75rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .philosophy h2 {
+    margin: 2.5rem 0 4rem;
+    font-size: clamp(2.7rem, 12vw, 3.25rem);
+    line-height: 1.12;
+  }
+}

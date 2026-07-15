@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./headline-spacing.css";
 
 export const metadata: Metadata = {
   title: "Devoid Media — Art Without Apology",
