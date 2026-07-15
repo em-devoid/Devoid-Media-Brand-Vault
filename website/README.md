@@ -9,7 +9,7 @@ The production website for Devoid Media LLC and the em.devoid creative brand.
 - Age-confirmation entrance
 - Project Genesis philosophy and brand positioning
 - Collaboration inquiry flow
-- Embedded Demon Stars and Song of Coronos brand fonts
+- Embedded Demon Stars, Song of Coronos, and Rebella brand fonts
 - OpenAI Sites deployment configuration
 
 ## Local development
