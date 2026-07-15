@@ -45,10 +45,10 @@ export default function Home() {
         <div className="entry" role="dialog" aria-modal="true" aria-labelledby="entry-title">
           <div className="entry-glow" />
           <img src="/media/logo-main.png" alt="Devoid Media" />
-          <p className="eyebrow">Independent creative studio · 18+</p>
+          <p className="eyebrow">Independent creative studio · 21+</p>
           <h1 id="entry-title">Enter the Void</h1>
-          <p>This site contains mature artistic themes. By entering, you confirm you are at least 18 years old.</p>
-          <button onClick={enter}>I am 18+</button>
+          <p>This site contains mature artistic themes. By entering, you confirm you are at least 21 years old.</p>
+          <button onClick={enter}>I am 21+</button>
         </div>
       )}
 
