@@ -70,7 +70,18 @@ export default function Home() {
           <div className="hero-shade" />
           <div className="hero-copy">
             <p className="eyebrow">Devoid Media LLC · The studio of em.devoid</p>
-            <h1>Art for the parts of us that refuse to disappear.</h1>
+            <h1 className="hero-title" aria-label="Art for the parts of us that refuse to disappear.">
+              <span className="hero-title-desktop" aria-hidden="true">
+                <span>Art for the parts of us</span>
+                <span>that refuse to disappear.</span>
+              </span>
+              <span className="hero-title-mobile" aria-hidden="true">
+                <span>Art for the</span>
+                <span>parts of us</span>
+                <span>that refuse to</span>
+                <span>disappear.</span>
+              </span>
+            </h1>
             <p className="lede">Boudoir. Dark romance. Intimate storytelling. A creative practice built on truth, freedom, and expression without apology.</p>
             <div className="hero-actions">
               <a className="button primary" href="#work">Enter the archive</a>
