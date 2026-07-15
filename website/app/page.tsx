@@ -46,9 +46,9 @@ export default function Home() {
           <div className="entry-glow" />
           <img src="/media/logo-main.png" alt="Devoid Media" />
           <p className="eyebrow">Independent creative studio · 18+</p>
-          <h1 id="entry-title">Enter as you are.</h1>
+          <h1 id="entry-title">Enter the Void</h1>
           <p>This site contains mature artistic themes. By entering, you confirm you are at least 18 years old.</p>
-          <button onClick={enter}>I am 18+ — Enter the void</button>
+          <button onClick={enter}>I am 18+</button>
         </div>
       )}
 

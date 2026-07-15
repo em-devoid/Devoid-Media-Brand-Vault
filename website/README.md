@@ -12,6 +12,8 @@ The production website for Devoid Media LLC and the em.devoid creative brand.
 - Embedded Demon Stars, Song of Coronos, and Ghosthey brand fonts
 - OpenAI Sites deployment configuration
 
+Waters Gothic is by Mouser Fonts (Jerry Landers) and is used under its commercial-web-use license.
+
 ## Local development
 
 From this folder:
