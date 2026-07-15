@@ -1,0 +1,141 @@
+"use client";
+
+import { FormEvent, useEffect, useState } from "react";
+
+const works = [
+  { src: "/media/editorial-wide.jpg", title: "Crimson Study", kind: "Boudoir / Art Direction", wide: true },
+  { src: "/media/editorial-standing.jpg", title: "After Hours", kind: "Editorial Modeling" },
+  { src: "/media/editorial-bound.png", title: "Bound in Red", kind: "Visual Storytelling" },
+  { src: "/media/editorial-fishnets.png", title: "Second Skin", kind: "Self-Portraiture", wide: true },
+  { src: "/media/editorial-splits.png", title: "Velvet Room", kind: "Cinematic Portraiture" },
+  { src: "/media/editorial-arch.jpg", title: "Nocturne", kind: "Intimate Editorial" },
+];
+
+const services = [
+  ["01", "Modeling", "Alternative, boudoir, editorial, promotional, and character-led work."],
+  ["02", "Content", "Premium photo and video assets, UGC, product imagery, and campaign concepts."],
+  ["03", "Story", "Dark romance, literary shorts, voice, and multidisciplinary narrative projects."],
+  ["04", "Direction", "Visual worlds, campaign art direction, photography, and creative partnerships."],
+];
+
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
+
+  useEffect(() => {
+    setAgeConfirmed(sessionStorage.getItem("devoid-entry") === "confirmed");
+  }, []);
+
+  const enter = () => {
+    sessionStorage.setItem("devoid-entry", "confirmed");
+    setAgeConfirmed(true);
+  };
+
+  const submitInquiry = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = encodeURIComponent(`Devoid Media inquiry — ${data.get("project")}`);
+    const body = encodeURIComponent(`Name: ${data.get("name")}\nEmail: ${data.get("email")}\nProject: ${data.get("project")}\n\n${data.get("message")}`);
+    window.location.href = `mailto:socials@devoidmediallc.com?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <>
+      {!ageConfirmed && (
+        <div className="entry" role="dialog" aria-modal="true" aria-labelledby="entry-title">
+          <div className="entry-glow" />
+          <img src="/media/logo-main.png" alt="Devoid Media" />
+          <p className="eyebrow">Independent creative studio · 18+</p>
+          <h1 id="entry-title">Enter as you are.</h1>
+          <p>This site contains mature artistic themes. By entering, you confirm you are at least 18 years old.</p>
+          <button onClick={enter}>I am 18+ — Enter the void</button>
+        </div>
+      )}
+
+      <header className="header">
+        <a className="brand" href="#top" aria-label="Devoid Media home"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></a>
+        <nav className={menuOpen ? "open" : ""} aria-label="Main navigation">
+          <a href="#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</a>
+          <a href="#work" onClick={() => setMenuOpen(false)}>Selected work</a>
+          <a href="#studio" onClick={() => setMenuOpen(false)}>Studio</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Collaborate</a>
+        </nav>
+        <a className="header-cta" href="#contact">Start a project <span>↗</span></a>
+        <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu"><span /><span /></button>
+      </header>
+
+      <main id="top">
+        <section className="hero">
+          <div className="hero-image" />
+          <div className="hero-shade" />
+          <div className="hero-copy">
+            <p className="eyebrow">Devoid Media LLC · The studio of em.devoid</p>
+            <h1>Art for the parts of us that refuse to disappear.</h1>
+            <p className="lede">Boudoir. Dark romance. Intimate storytelling. A creative practice built on truth, freedom, and expression without apology.</p>
+            <div className="hero-actions">
+              <a className="button primary" href="#work">Enter the archive</a>
+              <a className="text-link" href="#philosophy">Discover the philosophy <span>↓</span></a>
+            </div>
+          </div>
+          <div className="hero-index"><span>Est.</span><strong>2026</strong></div>
+        </section>
+
+        <section className="marquee" aria-label="Creative disciplines"><div>BOUDOIR <i>✦</i> DARK ROMANCE <i>✦</i> MODELING <i>✦</i> VISUAL STORYTELLING <i>✦</i> CREATIVE DIRECTION <i>✦</i></div></section>
+
+        <section className="philosophy" id="philosophy">
+          <div className="section-number">01 / PHILOSOPHY</div>
+          <div className="philosophy-copy">
+            <p className="eyebrow">The founding truth</p>
+            <h2>Devoid never meant empty.<br /><em>It meant free.</em></h2>
+            <div className="philosophy-grid">
+              <p className="large">We do not create mirrors to reflect ourselves. We create them so others can recognize themselves.</p>
+              <div><p>Devoid Media does not exist to manufacture identity. It exists to protect the freedom to express it—to give language and image to truths people have lived long before they had words for them.</p><p>Truth before illusion. Originality without performance. Work refined until it could only have come from us.</p></div>
+            </div>
+          </div>
+          <img className="philosophy-mark" src="/media/logo-mark.png" alt="" />
+        </section>
+
+        <section className="work" id="work">
+          <div className="section-head"><div><p className="eyebrow">02 / Selected work</p><h2>Archives of<br />the void</h2></div><p>Every frame is part confession, part invitation: come closer, look longer, recognize something.</p></div>
+          <div className="work-grid">
+            {works.map((work, index) => <figure className={work.wide ? "work-card wide" : "work-card"} key={work.title}>
+              <div className="image-wrap"><img src={work.src} alt={`${work.title} — ${work.kind}`} /><span>0{index + 1}</span></div>
+              <figcaption><div><p>{work.kind}</p><h3>{work.title}</h3></div><span>View study ↗</span></figcaption>
+            </figure>)}
+          </div>
+        </section>
+
+        <section className="studio" id="studio">
+          <div className="studio-photo"><img src="/media/portrait.jpg" alt="em.devoid in a red editorial portrait" /></div>
+          <div className="studio-copy">
+            <p className="eyebrow">03 / The artist & the studio</p>
+            <h2>One vision.<br />Many forms.</h2>
+            <p className="intro">em.devoid is the artist. Devoid Media LLC is the studio built to protect and expand the work.</p>
+            <p>Across photography, modeling, adult content, literary fiction, and creative direction, the medium changes. The standard does not: honest work, made with intention, refined without complacency.</p>
+            <a className="text-link" href="#contact">Work with Devoid Media <span>↗</span></a>
+          </div>
+        </section>
+
+        <section className="services">
+          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2>Built to create</h2></div><p>For aligned brands, photographers, publications, artists, and audiences.</p></div>
+          <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p><b>↗</b></article>)}</div>
+        </section>
+
+        <section className="statement"><img src="/media/editorial-wide.jpg" alt="Crimson boudoir editorial" /><div><p className="eyebrow">The promise</p><blockquote>“You never had to<br />stop being you.”</blockquote><p>For everyone who has ever believed they had to become someone else in order to belong.</p></div></section>
+
+        <section className="contact" id="contact">
+          <div className="contact-intro"><p className="eyebrow">05 / Collaborate</p><h2>Bring me the idea<br />you can’t shake.</h2><p>Editorials, campaigns, modeling, content partnerships, photography, writing, and work that does not fit neatly into a category.</p><a href="mailto:socials@devoidmediallc.com">socials@devoidmediallc.com</a></div>
+          <form onSubmit={submitInquiry}>
+            <label>Your name<input name="name" required placeholder="Name / company" /></label>
+            <label>Your email<input type="email" name="email" required placeholder="you@example.com" /></label>
+            <label>What are we creating?<select name="project" required defaultValue=""><option value="" disabled>Select a project type</option><option>Brand collaboration</option><option>Modeling or photography</option><option>Creator campaign</option><option>Writing or story</option><option>Press or appearance</option><option>Something entirely new</option></select></label>
+            <label>Tell me about the vision<textarea name="message" required rows={4} placeholder="The idea, timing, scope, and why Devoid Media…" /></label>
+            <button className="button primary" type="submit">Send inquiry <span>↗</span></button>
+          </form>
+        </section>
+      </main>
+
+      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Truth before illusion. Create with conviction.</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="#top">Back to top ↑</a></div></footer>
+    </>
+  );
+}
