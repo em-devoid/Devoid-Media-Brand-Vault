@@ -3,6 +3,9 @@ import "./globals.css";
 import "./headline-spacing.css";
 import "./entry-heading.css";
 import "./hero-heading.css";
+import "./section-headings.css";
+import "./uppercase-type.css";
+import "./card-headings.css";
 
 export const metadata: Metadata = {
   title: "Devoid Media — Art Without Apology",

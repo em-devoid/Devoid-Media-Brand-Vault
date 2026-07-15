@@ -91,10 +91,10 @@ export default function Home() {
           <div className="hero-index"><span>Est.</span><strong>2026</strong></div>
         </section>
 
-        <section className="marquee" aria-label="Creative disciplines"><div>BOUDOIR <i>✦</i> DARK ROMANCE <i>✦</i> MODELING <i>✦</i> VISUAL STORYTELLING <i>✦</i> CREATIVE DIRECTION <i>✦</i></div></section>
+        <section className="marquee" aria-label="Creative disciplines"><div>Boudoir <i>✦</i> Dark Romance <i>✦</i> Modeling <i>✦</i> Visual Storytelling <i>✦</i> Creative Direction <i>✦</i></div></section>
 
         <section className="philosophy" id="philosophy">
-          <div className="section-number">01 / PHILOSOPHY</div>
+          <div className="section-number">01 / Philosophy</div>
           <div className="philosophy-copy">
             <p className="eyebrow">The founding truth</p>
             <h2>Devoid never meant empty.<br /><em>It meant free.</em></h2>
@@ -107,7 +107,7 @@ export default function Home() {
         </section>
 
         <section className="work" id="work">
-          <div className="section-head"><div><p className="eyebrow">02 / Selected work</p><h2>Archives of<br />the void</h2></div><p>Every frame is part confession, part invitation: come closer, look longer, recognize something.</p></div>
+          <div className="section-head"><div><p className="eyebrow">02 / Selected work</p><h2 className="ghost-section-title">Archives of<br />the void</h2></div><p>Every frame is part confession, part invitation: come closer, look longer, recognize something.</p></div>
           <div className="work-grid">
             {works.map((work, index) => <figure className={work.wide ? "work-card wide" : "work-card"} key={work.title}>
               <div className="image-wrap"><img src={work.src} alt={`${work.title} — ${work.kind}`} /><span>0{index + 1}</span></div>
@@ -120,7 +120,7 @@ export default function Home() {
           <div className="studio-photo"><img src="/media/portrait.jpg" alt="em.devoid in a red editorial portrait" /></div>
           <div className="studio-copy">
             <p className="eyebrow">03 / The artist & the studio</p>
-            <h2>One vision.<br />Many forms.</h2>
+            <h2 className="ghost-section-title">One vision.<br />Many forms.</h2>
             <p className="intro">em.devoid is the artist. Devoid Media LLC is the studio built to protect and expand the work.</p>
             <p>Across photography, modeling, adult content, literary fiction, and creative direction, the medium changes. The standard does not: honest work, made with intention, refined without complacency.</p>
             <a className="text-link" href="#contact">Work with Devoid Media <span>↗</span></a>
@@ -128,7 +128,7 @@ export default function Home() {
         </section>
 
         <section className="services">
-          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2>Built to create</h2></div><p>For aligned brands, photographers, publications, artists, and audiences.</p></div>
+          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to create</h2></div><p>For aligned brands, photographers, publications, artists, and audiences.</p></div>
           <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p><b>↗</b></article>)}</div>
         </section>
 

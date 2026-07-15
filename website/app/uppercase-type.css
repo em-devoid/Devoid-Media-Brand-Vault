@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Darkones";
+  src: url("/fonts/darkones-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.eyebrow,
+.entry button,
+.header nav a,
+.header-cta,
+.button,
+.text-link,
+.hero-index span,
+.marquee div,
+.section-number,
+.work-card figcaption p,
+.work-card figcaption > span,
+.contact label,
+footer > div:last-child {
+  font-family: "Darkones", var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* Form controls keep the body typeface while their uppercase labels use Darkones. */
+.contact input,
+.contact select,
+.contact textarea {
+  font-family: var(--sans);
+}
+
+@media (max-width: 580px) {
+  .header nav a,
+  .button,
+  .text-link {
+    letter-spacing: 0.13em;
+  }
+}

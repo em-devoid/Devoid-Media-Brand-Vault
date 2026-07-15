@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Ghost Theory 2";
+  src: url("/fonts/ghost-theory-2.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.work-card h3,
+.service-list h3 {
+  font-family: "Ghost Theory 2", var(--serif);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+@media (max-width: 580px) {
+  .work-card h3,
+  .service-list h3 {
+    line-height: 1.16;
+  }
+}
