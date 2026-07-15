@@ -1,0 +1,19 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import "./headline-spacing.css";
+import "./entry-heading.css";
+
+export const metadata: Metadata = {
+  title: "Devoid Media — Art Without Apology",
+  description: "The independent creative studio of em.devoid: boudoir, dark romance, modeling, visual storytelling, and creative direction.",
+  icons: { icon: "/media/logo-mark.png" },
+  openGraph: {
+    title: "Devoid Media — Art Without Apology",
+    description: "Boudoir. Dark romance. Intimate storytelling. Enter the void.",
+    type: "website",
+  },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body>{children}</body></html>;
+}

@@ -1,0 +1,18 @@
+/* Waters Gothic by Mouser Fonts (Jerry Landers). */
+@font-face {
+  font-family: "Waters Gothic";
+  src: url("/fonts/waters-gothic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.entry img {
+  width: min(360px, 80vw);
+}
+
+.entry h1 {
+  font-family: "Waters Gothic", var(--serif);
+  font-style: normal;
+  font-weight: 400;
+}
