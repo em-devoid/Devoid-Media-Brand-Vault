@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -37,17 +37,28 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /Art for the parts of us that refuse to disappear\./);
   assert.match(html, /We do not create to perform an identity\./);
   assert.match(html, /Let yourself be seen\./);
-  assert.match(html, /Creator collaboration/);
-  assert.match(html, /Professional inquiry/);
-  assert.match(html, /All \/ same handle/);
-  assert.match(html, /Book em\.devoid for modeling/);
+  assert.match(html, /href="\/collaborate"/);
   assert.match(html, /Where authenticity is beautifully ruthless/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });
 
+test("server-renders the dedicated collaboration page", async () => {
+  const response = await render("/collaborate");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Creator collaboration/);
+  assert.match(html, /Professional inquiry/);
+  assert.match(html, /All \/ same handle/);
+  assert.match(html, /Book em\.devoid for modeling/);
+  assert.match(html, /collabs@devoidmediallc\.com/);
+  assert.match(html, /info@devoidmediallc\.com/);
+});
+
 test("keeps the final brand typography wired to local assets", async () => {
-  const [page, layout, entryCss, statementCss, footerCss] = await Promise.all([
+  const [page, collaborationPage, layout, entryCss, statementCss, footerCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/collaborate/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/entry-heading.css", import.meta.url), "utf8"),
     readFile(new URL("../app/statement-copy.css", import.meta.url), "utf8"),
@@ -56,8 +67,9 @@ test("keeps the final brand typography wired to local assets", async () => {
 
   assert.match(page, /className="entry-copy"/);
   assert.match(page, /Where authenticity is beautifully ruthless/);
-  assert.match(page, /collabs@devoidmediallc\.com/);
-  assert.match(page, /info@devoidmediallc\.com/);
+  assert.match(page, /href="\/collaborate"/);
+  assert.match(collaborationPage, /collabs@devoidmediallc\.com/);
+  assert.match(collaborationPage, /info@devoidmediallc\.com/);
   assert.match(layout, /import "\.\/footer-tagline\.css"/);
   assert.match(entryCss, /font-family:\s*"Waters Gothic"/);
   assert.match(statementCss, /font-family:\s*"Hanford Script"/);
