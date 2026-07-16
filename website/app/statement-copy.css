@@ -47,7 +47,7 @@
 .statement-lines {
   display: grid;
   justify-items: center;
-  gap: clamp(1rem, 1.8vw, 1.5rem);
+  gap: 0.65rem;
 }
 
 .statement-lines p {
@@ -117,7 +117,7 @@
   }
 
   .statement-lines {
-    gap: 1rem;
+    gap: 0.55rem;
   }
 
   .statement-release {

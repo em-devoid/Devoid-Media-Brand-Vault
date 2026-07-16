@@ -20,9 +20,10 @@
 
 .entry-copy {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto 1fr auto;
   width: min(1040px, 92vw);
-  height: clamp(15rem, 34vh, 20rem);
+  height: clamp(10.5rem, 24vh, 12rem);
   justify-items: center;
   row-gap: 0;
   margin-bottom: 0.25rem;
@@ -34,6 +35,7 @@
 
 .entry-copy h1 {
   align-self: center;
+  transform: translateY(0.3em);
 }
 
 .entry-kicker {
@@ -42,12 +44,17 @@
 
 .entry-notice {
   align-self: end;
+  width: 100%;
   max-width: 720px;
   color: var(--muted);
 }
 
 @media (max-width: 580px) {
   .entry-copy {
-    height: clamp(13rem, 30vh, 16rem);
+    height: 10rem;
+  }
+
+  .entry-copy h1 {
+    transform: translateY(0.25em);
   }
 }
