@@ -51,6 +51,7 @@ test("server-renders the dedicated collaboration page", async () => {
   assert.match(html, /Professional inquiry/);
   assert.match(html, /Choose “All” when one username works everywhere\./);
   assert.doesNotMatch(html, /All \/ same handle/);
+  assert.match(html, /type="checkbox"/);
   assert.match(html, /X \(formerly Twitter\)/);
   assert.match(html, /Bluesky/);
   assert.match(html, /Book em\.devoid for modeling/);

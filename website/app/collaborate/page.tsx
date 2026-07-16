@@ -22,16 +22,11 @@ export default function CollaboratePage() {
   const [platformError, setPlatformError] = useState(false);
 
   const togglePlatform = (platform: string) => {
-    setSelectedPlatforms((current) => {
-      if (platform === "All") {
-        return current.includes("All") ? [] : ["All"];
-      }
-
-      const withoutAll = current.filter((item) => item !== "All");
-      return withoutAll.includes(platform)
-        ? withoutAll.filter((item) => item !== platform)
-        : [...withoutAll, platform];
-    });
+    setSelectedPlatforms((current) =>
+      current.includes(platform)
+        ? current.filter((item) => item !== platform)
+        : [...current, platform],
+    );
     setPlatformError(false);
   };
 
