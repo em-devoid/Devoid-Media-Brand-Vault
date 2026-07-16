@@ -44,6 +44,16 @@
   font-weight: 700;
 }
 
+.statement-lines {
+  display: grid;
+  justify-items: center;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+.statement-lines p {
+  margin: 0;
+}
+
 .statement-belonging,
 .statement-release {
   max-width: 1200px;
@@ -63,13 +73,11 @@
 }
 
 .statement-seen {
-  margin: 0.8rem auto 0;
   color: #eee7e9;
   font: 400 calc(1.35rem + 3px)/1.35 "Elemental", var(--editorial);
 }
 
 .statement-release {
-  margin-top: 2rem;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -108,8 +116,11 @@
     font-size: calc(1.2rem + 3px);
   }
 
+  .statement-lines {
+    gap: 1rem;
+  }
+
   .statement-release {
-    margin-top: 1.7rem;
     font-size: 0.92rem;
     line-height: 1.65;
   }

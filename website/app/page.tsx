@@ -146,14 +146,18 @@ export default function Home() {
               <strong>We do not create to perform an identity.</strong>
               <strong>We create to express one.</strong>
             </blockquote>
-            <p className="statement-belonging">
-              For everyone who has ever believed they had to become someone else in order to belong… <em>You never had to stop being you.</em>
-            </p>
-            <p className="statement-seen">Let yourself be seen.</p>
-            <p className="statement-release">
-              Devoid Media isn’t to help <em>find</em> something lost.<br />
-              It’s to help <em>free</em> what has been buried.
-            </p>
+            <div className="statement-lines">
+              <p className="statement-belonging">
+                For everyone who has ever believed they had to become someone else in order to belong… <em>You never had to stop being you.</em>
+              </p>
+              <p className="statement-seen">Let yourself be seen.</p>
+              <p className="statement-release">
+                Devoid Media isn’t to help <em>find</em> something lost.
+              </p>
+              <p className="statement-release">
+                It’s to help <em>free</em> what has been buried.
+              </p>
+            </div>
           </div>
         </section>
 
