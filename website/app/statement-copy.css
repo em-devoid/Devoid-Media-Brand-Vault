@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Hanford Script";
+  src: url("/fonts/hanford-script.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Elemental";
+  src: url("/fonts/elemental.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 .statement {
   min-height: 100vh;
 }
@@ -14,6 +30,7 @@
 .statement blockquote {
   max-width: 1280px;
   margin: 2rem auto 2.5rem;
+  font-family: "Hanford Script", var(--serif);
   font-size: clamp(3.1rem, 5.8vw, 6.4rem);
   font-style: italic;
   font-weight: 400;
@@ -29,21 +46,26 @@
 
 .statement-belonging,
 .statement-release {
-  max-width: 900px;
+  max-width: 1200px;
   margin-inline: auto;
   color: #c5babe;
   text-wrap: balance;
 }
 
-.statement-belonging span,
 .statement-belonging em {
-  display: block;
+  color: inherit;
+  font: inherit;
+  font-style: italic;
 }
 
-.statement-belonging em {
-  margin-top: 0.8rem;
+.statement-belonging {
+  white-space: nowrap;
+}
+
+.statement-seen {
+  margin: 0.8rem auto 0;
   color: #eee7e9;
-  font: italic 1.35rem/1.35 var(--editorial);
+  font: 400 calc(1.35rem + 3px)/1.35 "Elemental", var(--editorial);
 }
 
 .statement-release {
@@ -75,7 +97,15 @@
   }
 
   .statement-belonging em {
-    font-size: 1.2rem;
+    font-size: inherit;
+  }
+
+  .statement-belonging {
+    white-space: normal;
+  }
+
+  .statement-seen {
+    font-size: calc(1.2rem + 3px);
   }
 
   .statement-release {

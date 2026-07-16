@@ -23,7 +23,11 @@ export default function Home() {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
 
   useEffect(() => {
-    setAgeConfirmed(sessionStorage.getItem("devoid-entry") === "confirmed");
+    const restoreEntry = requestAnimationFrame(() => {
+      setAgeConfirmed(sessionStorage.getItem("devoid-entry") === "confirmed");
+    });
+
+    return () => cancelAnimationFrame(restoreEntry);
   }, []);
 
   const enter = () => {
@@ -45,9 +49,11 @@ export default function Home() {
         <div className="entry" role="dialog" aria-modal="true" aria-labelledby="entry-title">
           <div className="entry-glow" />
           <img src="/media/logo-main.png" alt="Devoid Media" />
-          <p className="eyebrow">Independent creative studio · 21+</p>
-          <h1 id="entry-title">Enter the Void</h1>
-          <p>This site contains mature artistic themes. By entering, you confirm you are at least 21 years old.</p>
+          <div className="entry-copy">
+            <p className="eyebrow entry-kicker">Independent creative studio · 21+</p>
+            <h1 id="entry-title">Enter the Void</h1>
+            <p className="entry-notice">This site contains mature artistic themes. By entering, you confirm you are at least 21 years old.</p>
+          </div>
           <button onClick={enter}>I am 21+</button>
         </div>
       )}
@@ -137,16 +143,16 @@ export default function Home() {
           <div className="statement-content">
             <p className="eyebrow">The Promise</p>
             <blockquote>
-              <strong>“We do not create to perform an identity.</strong>
-              <strong>We create to express one.”</strong>
+              <strong>We do not create to perform an identity.</strong>
+              <strong>We create to express one.</strong>
             </blockquote>
             <p className="statement-belonging">
-              <span>For everyone who has ever believed they had to become someone else in order to belong…</span>
-              <em>You never had to<br />stop being you.</em>
+              For everyone who has ever believed they had to become someone else in order to belong… <em>You never had to stop being you.</em>
             </p>
+            <p className="statement-seen">Let yourself be seen.</p>
             <p className="statement-release">
               Devoid Media isn’t to help <em>find</em> something lost.<br />
-              It’s to help <em>release</em> something that’s never been let <em>free</em>.
+              It’s to help <em>free</em> what has been buried.
             </p>
           </div>
         </section>
@@ -163,7 +169,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Truth before illusion. Create with conviction.</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="#top">Back to top ↑</a></div></footer>
+      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is beautifully ruthless</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="#top">Back to top ↑</a></div></footer>
     </>
   );
 }

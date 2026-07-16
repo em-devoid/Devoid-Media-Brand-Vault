@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./headline-spacing.css";
 import "./entry-heading.css";
+import "./footer-tagline.css";
 import "./hero-heading.css";
 import "./section-headings.css";
 import "./uppercase-type.css";

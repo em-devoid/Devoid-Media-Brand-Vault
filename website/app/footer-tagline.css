@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "ParmaPetit";
+  src: url("/fonts/parma-petit-italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+footer > p {
+  font-family: "ParmaPetit", var(--serif);
+  font-style: italic;
+  font-weight: 400;
+}
