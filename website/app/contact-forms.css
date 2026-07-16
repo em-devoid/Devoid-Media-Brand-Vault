@@ -28,9 +28,9 @@
 }
 
 .contact-intro h1 {
-  margin: 0.6rem 0 2rem;
+  margin: clamp(1.65rem, 2.5vw, 2.25rem) 0 2.25rem;
   color: var(--silver);
-  font: italic 400 clamp(3.6rem, 7vw, 7.4rem) / 0.96 var(--display);
+  font: italic 400 clamp(3.6rem, 7vw, 7.4rem) / 1.08 var(--display);
   letter-spacing: -0.025em;
   text-wrap: balance;
 }

@@ -85,5 +85,6 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(footerCss, /font-family:\s*"ParmaPetit"/);
   assert.match(footerCss, /url\("\/fonts\/parma-petit-italic\.ttf"\)/);
   assert.match(contactCss, /\.contact-intro h1[\s\S]*var\(--display\)/);
+  assert.match(contactCss, /clamp\(1\.65rem,\s*2\.5vw,\s*2\.25rem\)[\s\S]*\/ 1\.08 var\(--display\)/);
   assert.match(contactCss, /\.platform-options[\s\S]*grid-template-columns:\s*repeat\(4/);
 });
