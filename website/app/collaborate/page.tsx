@@ -4,26 +4,59 @@ import { FormEvent, useState } from "react";
 
 type InquiryType = "creator" | "professional";
 
-const creatorPlatforms = ["Instagram", "TikTok", "X / Twitter", "OnlyFans", "Fansly", "All / same handle"];
+const creatorPlatforms = [
+  "Instagram",
+  "Threads",
+  "X (formerly Twitter)",
+  "TikTok",
+  "Bluesky",
+  "Fansly",
+  "OnlyFans",
+  "All",
+];
 
 export default function CollaboratePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [inquiryType, setInquiryType] = useState<InquiryType>("creator");
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
+  const [platformError, setPlatformError] = useState(false);
+
+  const togglePlatform = (platform: string) => {
+    setSelectedPlatforms((current) => {
+      if (platform === "All") {
+        return current.includes("All") ? [] : ["All"];
+      }
+
+      const withoutAll = current.filter((item) => item !== "All");
+      return withoutAll.includes(platform)
+        ? withoutAll.filter((item) => item !== platform)
+        : [...withoutAll, platform];
+    });
+    setPlatformError(false);
+  };
 
   const submitInquiry = (event: FormEvent<HTMLFormElement>, type: InquiryType) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const isCreator = type === "creator";
+    const platforms = data.getAll("platform").map(String);
+
+    if (isCreator && platforms.length === 0) {
+      setPlatformError(true);
+      document.getElementById("platform-picker")?.focus();
+      return;
+    }
+
     const recipient = isCreator ? "collabs@devoidmediallc.com" : "info@devoidmediallc.com";
     const subject = isCreator
-      ? `Creator collaboration — ${data.get("handle")} via ${data.get("platform")}`
+      ? `Creator collaboration — ${data.get("handle")} via ${platforms.join(", ")}`
       : `Professional inquiry — ${data.get("company")} — ${data.get("project")}`;
     const details = isCreator
       ? [
           `Name: ${data.get("name")}`,
           `Email: ${data.get("email")}`,
           `Phone: ${data.get("phone") || "Not provided"}`,
-          `Preferred platform: ${data.get("platform")}`,
+          `Preferred platforms: ${platforms.join(", ")}`,
           `Social handle: ${data.get("handle")}`,
         ]
       : [
@@ -87,7 +120,8 @@ export default function CollaboratePage() {
 
             <div className="contact-direct">
               <p><span>Creator collabs</span><a href="mailto:collabs@devoidmediallc.com">collabs@devoidmediallc.com</a></p>
-              <p><span>Business & press</span><a href="mailto:info@devoidmediallc.com">info@devoidmediallc.com</a></p>
+              <p><span>Business</span><a href="mailto:partnerships@devoidmediallc.com">partnerships@devoidmediallc.com</a></p>
+              <p><span>Press</span><a href="mailto:press@devoidmediallc.com">press@devoidmediallc.com</a></p>
             </div>
           </div>
 
@@ -111,17 +145,32 @@ export default function CollaboratePage() {
                 <label>Email address *<input type="email" name="email" autoComplete="email" required placeholder="you@example.com" /></label>
               </div>
               <label>Phone number <span>(optional)</span><input type="tel" name="phone" autoComplete="tel" placeholder="(555) 555-5555" /></label>
-              <fieldset className="platform-picker">
-                <legend>Preferred platform *</legend>
-                <p>Choose “All / same handle” when one username works everywhere.</p>
+              <fieldset
+                className={`platform-picker ${platformError ? "has-error" : ""}`}
+                id="platform-picker"
+                tabIndex={-1}
+                aria-describedby="platform-guidance platform-error"
+              >
+                <legend>Preferred platforms *</legend>
+                <p id="platform-guidance">Choose “All” when one username works everywhere.</p>
                 <div className="platform-options">
                   {creatorPlatforms.map((platform) => (
                     <label className="platform-option" key={platform}>
-                      <input type="radio" name="platform" value={platform} required={platform === creatorPlatforms[0]} />
-                      <span>{platform}</span>
+                      <input
+                        type="checkbox"
+                        name="platform"
+                        value={platform}
+                        checked={selectedPlatforms.includes(platform)}
+                        onChange={() => togglePlatform(platform)}
+                      />
+                      <span className="platform-check" aria-hidden="true" />
+                      <span className="platform-name">{platform}</span>
                     </label>
                   ))}
                 </div>
+                <p className="platform-error" id="platform-error" role="alert" aria-live="polite">
+                  {platformError ? "Choose at least one preferred platform." : ""}
+                </p>
               </fieldset>
               <label>Social handle *<input name="handle" required placeholder="@yourhandle" /></label>
               <label>What do you want to create? *<textarea name="message" required rows={5} placeholder="Tell me about you, the collaboration, timing, location, and the energy you want to create…" /></label>

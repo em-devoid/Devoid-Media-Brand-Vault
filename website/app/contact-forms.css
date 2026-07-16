@@ -10,6 +10,7 @@
 .contact-intro {
   position: sticky;
   top: 3rem;
+  min-width: 0;
 }
 
 .collaboration-page {
@@ -29,8 +30,9 @@
 .contact-intro h1 {
   margin: 0.6rem 0 2rem;
   color: var(--silver);
-  font: 400 clamp(3.6rem, 7vw, 7.4rem) / 0.92 var(--serif);
-  letter-spacing: -0.04em;
+  font: italic 400 clamp(3.6rem, 7vw, 7.4rem) / 0.96 var(--display);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 .contact-intro h2 {
@@ -129,9 +131,11 @@
 
 .contact-direct a {
   width: fit-content;
+  max-width: 100%;
   color: #d04a68;
   border-bottom: 1px solid rgba(208, 74, 104, 0.5);
   font-size: 0.88rem;
+  overflow-wrap: anywhere;
 }
 
 .contact-panel {
@@ -227,13 +231,22 @@
 }
 
 .platform-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem 1rem;
 }
 
 .platform-option {
-  display: block !important;
+  display: flex !important;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.35rem 0;
+  color: #b9adb1 !important;
+  font-family: var(--sans) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none;
   cursor: pointer;
 }
 
@@ -245,30 +258,79 @@
   pointer-events: none;
 }
 
-.platform-option span {
-  display: block;
-  padding: 0.58rem 0.8rem;
-  border: 1px solid var(--line);
+.platform-check {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #79676d;
+  border-radius: 50%;
   background: rgba(16, 10, 12, 0.72);
-  color: #b9adb1 !important;
-  font-family: var(--sans) !important;
-  font-size: 0.72rem !important;
-  letter-spacing: 0.02em !important;
-  text-transform: none;
-  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
 }
 
-.platform-option:hover span,
-.platform-option input:focus-visible + span {
+.platform-check::after {
+  content: "";
+  position: absolute;
+  inset: 0.22rem;
+  border-radius: 50%;
+  background: #e3dadd;
+  opacity: 0;
+  transform: scale(0.35);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.platform-name {
+  min-width: 0;
+  color: inherit !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+.platform-option:hover,
+.platform-option input:focus-visible ~ .platform-name {
   border-color: rgba(198, 55, 88, 0.7);
   color: #fff !important;
 }
 
-.platform-option input:checked + span {
+.platform-option:hover .platform-check,
+.platform-option input:focus-visible + .platform-check {
+  border-color: rgba(198, 55, 88, 0.9);
+}
+
+.platform-option input:focus-visible + .platform-check {
+  outline: 2px solid rgba(211, 72, 105, 0.48);
+  outline-offset: 3px;
+}
+
+.platform-option input:checked + .platform-check {
   border-color: #b72d4e;
-  background: rgba(134, 24, 52, 0.48);
+  background: #8a1834;
+  box-shadow: 0 0 0 3px rgba(183, 45, 78, 0.13);
+}
+
+.platform-option input:checked + .platform-check::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.platform-option input:checked ~ .platform-name {
   color: #fff !important;
-  box-shadow: inset 0 -2px 0 #d34869;
+}
+
+.platform-picker:focus {
+  outline: none;
+}
+
+.platform-picker.has-error .platform-check {
+  border-color: #d34869;
+}
+
+.platform-error {
+  min-height: 1.15rem;
+  margin: 0.35rem 0 0 !important;
+  color: #d75b78 !important;
+  font-size: 0.7rem !important;
 }
 
 .inquiry-form .button {
@@ -317,17 +379,19 @@
   }
 
   .platform-options {
-    gap: 0.45rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 0.8rem;
   }
 
-  .platform-option span {
-    padding: 0.52rem 0.65rem;
+  .platform-option {
+    padding: 0.25rem 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .contact-path,
-  .platform-option span {
+  .platform-check,
+  .platform-check::after {
     transition: none;
   }
 }

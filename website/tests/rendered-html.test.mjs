@@ -49,27 +49,33 @@ test("server-renders the dedicated collaboration page", async () => {
   const html = await response.text();
   assert.match(html, /Creator collaboration/);
   assert.match(html, /Professional inquiry/);
-  assert.match(html, /All \/ same handle/);
+  assert.match(html, /Choose “All” when one username works everywhere\./);
+  assert.doesNotMatch(html, /All \/ same handle/);
+  assert.match(html, /X \(formerly Twitter\)/);
+  assert.match(html, /Bluesky/);
   assert.match(html, /Book em\.devoid for modeling/);
   assert.match(html, /collabs@devoidmediallc\.com/);
-  assert.match(html, /info@devoidmediallc\.com/);
+  assert.match(html, /partnerships@devoidmediallc\.com/);
+  assert.match(html, /press@devoidmediallc\.com/);
 });
 
 test("keeps the final brand typography wired to local assets", async () => {
-  const [page, collaborationPage, layout, entryCss, statementCss, footerCss] = await Promise.all([
+  const [page, collaborationPage, layout, entryCss, statementCss, footerCss, contactCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/collaborate/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/entry-heading.css", import.meta.url), "utf8"),
     readFile(new URL("../app/statement-copy.css", import.meta.url), "utf8"),
     readFile(new URL("../app/footer-tagline.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/contact-forms.css", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /className="entry-copy"/);
   assert.match(page, /Where authenticity is beautifully ruthless/);
   assert.match(page, /href="\/collaborate"/);
   assert.match(collaborationPage, /collabs@devoidmediallc\.com/);
-  assert.match(collaborationPage, /info@devoidmediallc\.com/);
+  assert.match(collaborationPage, /partnerships@devoidmediallc\.com/);
+  assert.match(collaborationPage, /press@devoidmediallc\.com/);
   assert.match(layout, /import "\.\/footer-tagline\.css"/);
   assert.match(entryCss, /font-family:\s*"Waters Gothic"/);
   assert.match(statementCss, /font-family:\s*"Hanford Script"/);
@@ -77,4 +83,6 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(statementCss, /font-family:\s*"Elemental"/);
   assert.match(footerCss, /font-family:\s*"ParmaPetit"/);
   assert.match(footerCss, /url\("\/fonts\/parma-petit-italic\.ttf"\)/);
+  assert.match(contactCss, /\.contact-intro h1[\s\S]*var\(--display\)/);
+  assert.match(contactCss, /\.platform-options[\s\S]*grid-template-columns:\s*repeat\(4/);
 });
