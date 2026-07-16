@@ -37,6 +37,10 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /Art for the parts of us that refuse to disappear\./);
   assert.match(html, /We do not create to perform an identity\./);
   assert.match(html, /Let yourself be seen\./);
+  assert.match(html, /Creator collaboration/);
+  assert.match(html, /Professional inquiry/);
+  assert.match(html, /All \/ same handle/);
+  assert.match(html, /Book em\.devoid for modeling/);
   assert.match(html, /Where authenticity is beautifully ruthless/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });
@@ -52,6 +56,8 @@ test("keeps the final brand typography wired to local assets", async () => {
 
   assert.match(page, /className="entry-copy"/);
   assert.match(page, /Where authenticity is beautifully ruthless/);
+  assert.match(page, /collabs@devoidmediallc\.com/);
+  assert.match(page, /info@devoidmediallc\.com/);
   assert.match(layout, /import "\.\/footer-tagline\.css"/);
   assert.match(entryCss, /font-family:\s*"Waters Gothic"/);
   assert.match(statementCss, /font-family:\s*"Hanford Script"/);
