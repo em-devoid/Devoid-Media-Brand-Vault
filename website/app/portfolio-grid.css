@@ -5,8 +5,9 @@
 }
 
 .section-head > .portfolio-intro {
-  width: min(48vw, 680px);
-  max-width: 680px;
+  width: clamp(420px, 30vw, 560px);
+  max-width: 560px;
+  margin-left: auto;
 }
 
 .work-column {
