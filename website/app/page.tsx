@@ -105,7 +105,7 @@ export default function Home() {
         </section>
 
         <section className="work" id="work">
-          <div className="section-head"><div><p className="eyebrow">02 / Selected work</p><h2 className="ghost-section-title">Archives of<br />the void</h2></div><p>Every frame is part confession, part invitation: come closer, look longer, recognize something.</p></div>
+          <div className="section-head"><div><p className="eyebrow">02 / Portfolio</p><h2 className="ghost-section-title">Archives of<br />the void</h2></div><p>Every frame is part confession, part invitation: come closer, look longer, recognize something.</p></div>
           <div className="work-grid">
             {works.map((work, index) => <figure className={`work-card ${work.format}`} key={work.title}>
               <div className="image-wrap"><img src={work.src} alt={`${work.title} — ${work.kind}`} /><span>0{index + 1}</span></div>
