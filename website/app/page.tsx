@@ -85,7 +85,7 @@ export default function Home() {
                 <span>disappear.</span>
               </span>
             </h1>
-            <p className="lede">Boudoir. <span className="accent-text">Dark romance.</span> Intimate storytelling. A creative practice built on truth, freedom, and expression without apology.</p>
+            <p className="lede">Boudoir. Dark romance. Intimate storytelling. A creative practice built on <span className="accent-text">truth, freedom, and expression without apology.</span></p>
             <div className="hero-actions">
               <a className="button primary" href="#work">Enter the archive</a>
               <a className="text-link" href="#philosophy">Discover the philosophy <span>↓</span></a>

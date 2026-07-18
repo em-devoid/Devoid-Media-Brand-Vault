@@ -39,6 +39,8 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /aria-label="Enter the Void"/);
   assert.match(html, /I am 21\+/);
   assert.match(html, /Art for the parts of us that refuse to disappear\./);
+  assert.match(html, /Boudoir\. Dark romance\. Intimate storytelling\. A creative practice built on <span class="accent-text">truth, freedom, and expression without apology\.<\/span>/);
+  assert.doesNotMatch(html, /class="accent-text">Dark romance\.<\/span>/);
   assert.match(html, /We do not create to perform an identity\./);
   assert.match(html, /Let yourself be seen\./);
   assert.match(html, /class="accent-text">Void<\/span>/);
