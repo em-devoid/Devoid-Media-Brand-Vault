@@ -42,6 +42,8 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /We do not create to perform an identity\./);
   assert.match(html, /Let yourself be seen\./);
   assert.match(html, /href="\/collaborate"/);
+  assert.match(html, />Portfolio<\/a>/);
+  assert.doesNotMatch(html, />Selected work<\/a>/i);
   assert.match(html, /Where authenticity is beautifully ruthless/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });

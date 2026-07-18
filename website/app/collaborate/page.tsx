@@ -187,7 +187,7 @@ export default function CollaboratePage() {
         <Link className="brand" href="/" aria-label="Devoid Media home"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></Link>
         <nav className={menuOpen ? "open" : ""} aria-label="Main navigation">
           <Link href="/#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</Link>
-          <Link href="/#work" onClick={() => setMenuOpen(false)}>Selected work</Link>
+          <Link href="/#work" onClick={() => setMenuOpen(false)}>Portfolio</Link>
           <Link href="/#studio" onClick={() => setMenuOpen(false)}>Studio</Link>
           <Link href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</Link>
         </nav>

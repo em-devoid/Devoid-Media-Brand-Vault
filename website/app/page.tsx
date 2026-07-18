@@ -54,7 +54,7 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="Devoid Media home"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></a>
         <nav className={menuOpen ? "open" : ""} aria-label="Main navigation">
           <a href="#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</a>
-          <a href="#work" onClick={() => setMenuOpen(false)}>Selected work</a>
+          <a href="#work" onClick={() => setMenuOpen(false)}>Portfolio</a>
           <a href="#studio" onClick={() => setMenuOpen(false)}>Studio</a>
           <a href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</a>
         </nav>
