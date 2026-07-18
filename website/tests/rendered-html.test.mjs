@@ -211,11 +211,12 @@ test("routes business and press inquiries to the shared info inbox", async (t) =
 });
 
 test("keeps the final brand typography wired to local assets", async () => {
-  const [page, collaborationPage, layout, entryCss, statementCss, footerCss, contactCss, portfolioCss] = await Promise.all([
+  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/collaborate/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/entry-heading.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/hero-heading.css", import.meta.url), "utf8"),
     readFile(new URL("../app/statement-copy.css", import.meta.url), "utf8"),
     readFile(new URL("../app/footer-tagline.css", import.meta.url), "utf8"),
     readFile(new URL("../app/contact-forms.css", import.meta.url), "utf8"),
@@ -235,6 +236,8 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(layout, /import "\.\/footer-tagline\.css"/);
   assert.match(layout, /import "\.\/portfolio-grid\.css"/);
   assert.match(entryCss, /font-family:\s*"Waters Gothic"/);
+  assert.match(heroCss, /font-family:\s*"Hanford Script"/);
+  assert.match(heroCss, /url\("\/fonts\/hanford-script\.ttf"\)/);
   assert.match(statementCss, /font-family:\s*"Hanford Script"/);
   assert.match(statementCss, /url\("\/fonts\/hanford-script\.ttf"\)/);
   assert.match(statementCss, /font-family:\s*"Elemental"/);

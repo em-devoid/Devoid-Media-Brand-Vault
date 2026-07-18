@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "PentaGram Calligraphy";
-  src: url("/fonts/pentagrams-calligraphy.ttf") format("truetype");
+  font-family: "Hanford Script";
+  src: url("/fonts/hanford-script.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -9,7 +9,7 @@
 .hero h1.hero-title {
   max-width: none;
   margin: 1.25rem 0 2rem;
-  font-family: "PentaGram Calligraphy", var(--serif);
+  font-family: "Hanford Script", var(--serif);
   font-size: clamp(4.2rem, 7.8vw, 8.6rem);
   font-style: normal;
   font-weight: 400;
