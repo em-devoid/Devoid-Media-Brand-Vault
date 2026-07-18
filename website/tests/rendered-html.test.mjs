@@ -222,6 +222,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   ]);
 
   assert.match(page, /className="entry-copy"/);
+  assert.match(page, /work-column work-column-/);
   assert.match(page, /title: "Velvet Room"[\s\S]*?format: "landscape"/);
   assert.match(page, /Where authenticity is beautifully ruthless/);
   assert.match(page, /href="\/collaborate"/);
