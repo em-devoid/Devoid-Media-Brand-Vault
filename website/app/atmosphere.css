@@ -1,9 +1,8 @@
-/* Low-contrast brand ornamentation for the site's negative space. */
+/* Quiet, image-led ornamentation kept inside true negative space. */
 .work,
 .services,
 .studio-copy,
-.collaboration-page .contact,
-footer {
+.collaboration-page .contact {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -12,155 +11,106 @@ footer {
 .work > *,
 .services > *,
 .studio-copy > *,
-.collaboration-page .contact > *,
-footer > * {
+.collaboration-page .contact > * {
   position: relative;
   z-index: 1;
 }
 
 .work::before,
 .services::before,
+.studio-copy::after,
 .collaboration-page .contact::before {
   content: "";
   position: absolute;
   z-index: 0;
-  width: clamp(430px, 48vw, 820px);
   aspect-ratio: 1;
-  background: url("/media/logo-mark.png") center / contain no-repeat;
-  opacity: 0.052;
-  filter: grayscale(0.32) saturate(0.72);
+  background: url("/media/ornament-mandala-v2.png") center / contain no-repeat;
+  filter: grayscale(1) sepia(0.9) saturate(7) hue-rotate(300deg) contrast(1.08);
   pointer-events: none;
 }
 
 .work::before {
-  top: 28%;
-  right: -14vw;
-  transform: rotate(-8deg);
+  top: 30%;
+  right: -22vw;
+  width: clamp(520px, 54vw, 900px);
+  opacity: 0.055;
+  transform: rotate(-7deg);
 }
 
 .services::before {
-  left: -15vw;
-  bottom: -34%;
-  transform: rotate(13deg);
-  opacity: 0.042;
-}
-
-.collaboration-page .contact::before {
-  left: -17vw;
-  bottom: -8rem;
-  transform: rotate(11deg);
-  opacity: 0.045;
-}
-
-.work::after,
-.services::after,
-.studio-copy::after,
-.collaboration-page .contact::after,
-footer::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, transparent 0 12%, rgba(179, 38, 76, 0.18) 12.4% 12.9%, transparent 13.3% 28%, rgba(179, 38, 76, 0.13) 28.4% 29%, transparent 29.4% 47%, rgba(179, 38, 76, 0.1) 47.4% 48%, transparent 48.4%),
-    repeating-conic-gradient(from 4deg, rgba(184, 44, 82, 0.18) 0 1.2deg, transparent 1.2deg 11.25deg);
-  -webkit-mask-image: radial-gradient(circle, #000 0 68%, transparent 70%);
-  mask-image: radial-gradient(circle, #000 0 68%, transparent 70%);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.work::after {
-  top: 5%;
-  left: -15rem;
-  width: clamp(460px, 42vw, 720px);
-  transform: rotate(9deg);
-}
-
-.services::after {
-  top: 8%;
-  right: -12rem;
-  width: clamp(380px, 34vw, 590px);
-  opacity: 0.42;
+  top: 50%;
+  right: -18vw;
+  width: clamp(480px, 48vw, 760px);
+  opacity: 0.05;
+  transform: translateY(-50%) rotate(8deg);
 }
 
 .studio-copy::after {
-  top: -15%;
-  right: -32%;
-  width: clamp(390px, 36vw, 620px);
-  opacity: 0.34;
-  transform: rotate(-11deg);
+  right: -30%;
+  bottom: -22%;
+  width: clamp(430px, 40vw, 680px);
+  opacity: 0.034;
+  transform: rotate(-10deg);
 }
 
-.collaboration-page .contact::after {
-  top: 4rem;
-  right: -14rem;
-  width: clamp(420px, 39vw, 680px);
-  opacity: 0.38;
-  transform: rotate(7deg);
+.collaboration-page .contact::before {
+  left: -20vw;
+  bottom: -12rem;
+  width: clamp(500px, 52vw, 840px);
+  opacity: 0.04;
+  transform: rotate(10deg);
 }
 
-footer::before {
-  left: 50%;
-  bottom: -22rem;
-  width: min(680px, 82vw);
-  opacity: 0.28;
-  transform: translateX(-50%);
-}
-
-.philosophy::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 10%;
-  right: -19vw;
-  width: min(650px, 54vw);
-  aspect-ratio: 1;
-  border: 1px solid rgba(224, 216, 205, 0.075);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 2.4rem rgba(164, 35, 69, 0.025),
-    0 0 0 5.5rem rgba(220, 211, 202, 0.018);
-  pointer-events: none;
-}
-
+/* Preserve the original single lunar figure in Philosophy without duplication. */
 .philosophy-mark {
-  opacity: 0.11;
+  opacity: 0.08;
 }
 
 @media (max-width: 900px) {
   .work::before {
-    top: 42%;
-    right: -35vw;
+    top: 38%;
+    right: -42vw;
   }
 
-  .services::before,
-  .collaboration-page .contact::before {
-    width: min(620px, 84vw);
+  .services::before {
+    right: -42vw;
   }
 
   .studio-copy::after {
-    right: -42%;
+    right: -48%;
+  }
+
+  .collaboration-page .contact::before {
+    left: -45vw;
   }
 }
 
 @media (max-width: 580px) {
   .work::before,
-  .services::before,
+  .services::before {
+    width: 430px;
+    opacity: 0.035;
+  }
+
+  .work::before {
+    right: -68vw;
+  }
+
+  .services::before {
+    right: -72vw;
+  }
+
+  .studio-copy::after,
   .collaboration-page .contact::before {
-    opacity: 0.028;
+    width: 390px;
+    opacity: 0.024;
   }
 
-  .work::after,
-  .services::after,
-  .collaboration-page .contact::after {
-    width: 360px;
-    opacity: 0.26;
-  }
-
-  .philosophy::before,
   .studio-copy::after {
-    opacity: 0.2;
+    right: -78%;
+  }
+
+  .collaboration-page .contact::before {
+    left: -78vw;
   }
 }

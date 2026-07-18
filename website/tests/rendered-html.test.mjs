@@ -268,7 +268,8 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(accentsCss, /\.work-card\.work-3 h3/);
   assert.match(accentsCss, /\.service-list article:nth-child\(even\) h3/);
   assert.match(accentsCss, /\.service-list article:nth-child\(odd\) p/);
-  assert.match(atmosphereCss, /url\("\/media\/logo-mark\.png"\)/);
-  assert.match(atmosphereCss, /repeating-conic-gradient/);
+  assert.match(atmosphereCss, /url\("\/media\/ornament-mandala-v2\.png"\)/);
+  assert.doesNotMatch(atmosphereCss, /repeating-conic-gradient/);
+  assert.doesNotMatch(atmosphereCss, /url\("\/media\/logo-mark\.png"\)/);
   assert.match(atmosphereCss, /@media \(max-width: 580px\)/);
 });
