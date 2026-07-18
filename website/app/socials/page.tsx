@@ -15,8 +15,20 @@ const mainChannels = [
 ];
 
 const friendLinks = [
-  { name: "Unholy Ghost", label: "Official website", href: "https://www.unholyghost.org", icon: "/media/socials/ghost-orgy.png" },
-  { name: "Unholy Ghost", label: "Listen on Spotify", href: "https://open.spotify.com/artist/1SslPfozi6GhP2JbSNoLTB?si=df_xI4TWQm6ziQ9uE1qYYw", icon: "/media/socials/spotify.svg" },
+  {
+    name: "Ghost Orgy・Nine Sisters, One Orchard",
+    label: "Official website",
+    href: "https://www.unholyghost.org",
+    icon: "/media/socials/ghost-orgy.png",
+    variant: "website",
+  },
+  {
+    name: "Unholy Ghost・Containment Broken",
+    label: "Listen on Spotify",
+    href: "https://open.spotify.com/artist/1SslPfozi6GhP2JbSNoLTB?si=df_xI4TWQm6ziQ9uE1qYYw",
+    icon: "/media/socials/ghost-orgy.png",
+    variant: "spotify",
+  },
 ];
 
 export default function SocialsPage() {
@@ -72,7 +84,7 @@ export default function SocialsPage() {
           </div>
           <div className="friend-grid">
             {friendLinks.map((friend) => (
-              <a className="social-card friend-card" href={friend.href} target="_blank" rel="noreferrer" key={friend.label}>
+              <a className={`social-card friend-card friend-card-${friend.variant}`} href={friend.href} target="_blank" rel="noreferrer" key={friend.label}>
                 <span className="social-icon-wrap"><img src={friend.icon} alt="" /></span>
                 <span className="social-card-copy"><strong>{friend.name}</strong><small>{friend.label}</small></span>
                 <span className="social-card-arrow" aria-hidden="true">↗</span>
