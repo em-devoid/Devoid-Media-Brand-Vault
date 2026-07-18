@@ -272,6 +272,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(contactCss, /\.platform-option[\s\S]*font-size:\s*clamp\(0\.9rem,\s*0\.92vw,\s*1rem\)/);
   assert.match(contactCss, /\.form-status[\s\S]*font-size:\s*0\.95rem/);
   assert.match(portfolioCss, /width:\s*clamp\(420px, 30vw, 560px\)/);
+  assert.match(portfolioCss, /translateX\(clamp\(2\.5rem, 4vw, 4\.5rem\)\)/);
   assert.match(accentsCss, /--crimson-text:\s*#c43a5b/);
   assert.match(accentsCss, /\.hero-title-desktop\s*>\s*span:last-child/);
   assert.match(accentsCss, /\.work-card\.work-3 h3/);
@@ -287,5 +288,5 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(atmosphereCss, /\.collaboration-page \.contact::after/);
   assert.match(atmosphereCss, /\.philosophy-mark\s*\{\s*display: none;/);
   assert.match(atmosphereCss, /@media \(max-width: 580px\)/);
-  assert.match(serviceOrnamentsCss, /grid-template-columns:\s*8% 28% minmax\(140px, 1fr\) minmax\(0, 43%\)/);
+  assert.match(serviceOrnamentsCss, /grid-template-columns:\s*8% clamp\(190px, 11vw, 220px\) minmax\(140px, 1fr\) minmax\(0, 43%\)/);
 });

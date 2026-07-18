@@ -96,10 +96,11 @@
   }
 }
 
-/* Keep every jewel cluster on one shared axis while preserving a generous
-   flexible gap between each title and its description. */
+/* Give every title the same measured column, then let the jewel column absorb
+   the remaining space. This centers every cluster in the visible gap between
+   the titles and descriptions instead of centering it in an oversized cell. */
 .service-list article {
-  grid-template-columns: 8% 28% minmax(140px, 1fr) minmax(0, 43%);
+  grid-template-columns: 8% clamp(190px, 11vw, 220px) minmax(140px, 1fr) minmax(0, 43%);
 }
 
 .service-list article .service-ornament,
