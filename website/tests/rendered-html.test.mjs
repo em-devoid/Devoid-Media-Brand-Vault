@@ -267,6 +267,10 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(contactCss, /\.contact-intro h1[\s\S]*var\(--display\)/);
   assert.match(contactCss, /clamp\(1\.65rem,\s*2\.5vw,\s*2\.25rem\)[\s\S]*\/ 1\.08 var\(--display\)/);
   assert.match(contactCss, /\.platform-options[\s\S]*grid-template-columns:\s*repeat\(4/);
+  assert.match(contactCss, /\.inquiry-form label[\s\S]*font-size:\s*clamp\(0\.78rem,\s*0\.82vw,\s*0\.9rem\)/);
+  assert.match(contactCss, /\.inquiry-form textarea[\s\S]*font-size:\s*clamp\(1rem,\s*1vw,\s*1\.1rem\)/);
+  assert.match(contactCss, /\.platform-option[\s\S]*font-size:\s*clamp\(0\.9rem,\s*0\.92vw,\s*1rem\)/);
+  assert.match(contactCss, /\.form-status[\s\S]*font-size:\s*0\.95rem/);
   assert.match(portfolioCss, /width:\s*clamp\(420px, 30vw, 560px\)/);
   assert.match(accentsCss, /--crimson-text:\s*#c43a5b/);
   assert.match(accentsCss, /\.hero-title-desktop\s*>\s*span:last-child/);

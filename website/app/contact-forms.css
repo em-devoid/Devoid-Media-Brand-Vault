@@ -164,6 +164,8 @@
   max-width: 650px;
   margin: 0;
   color: #a99da0;
+  font-size: clamp(1rem, 1.05vw, 1.12rem);
+  line-height: 1.65;
 }
 
 .inquiry-form {
@@ -183,12 +185,14 @@
 
 .inquiry-form label {
   min-width: 0;
+  font-size: clamp(0.78rem, 0.82vw, 0.9rem);
+  line-height: 1.45;
 }
 
 .inquiry-form label > span {
   color: #756a6d;
   font-family: var(--sans);
-  font-size: 0.82em;
+  font-size: 0.9em;
   letter-spacing: 0;
 }
 
@@ -196,6 +200,8 @@
 .inquiry-form select,
 .inquiry-form textarea {
   border-color: rgba(164, 143, 149, 0.4);
+  font-size: clamp(1rem, 1vw, 1.1rem);
+  line-height: 1.55;
 }
 
 .inquiry-form input::placeholder,
@@ -220,14 +226,15 @@
   margin-bottom: 0.25rem;
   color: #a99da0;
   font-family: "Darkones", var(--sans);
-  font-size: 0.62rem;
+  font-size: clamp(0.78rem, 0.82vw, 0.9rem);
   letter-spacing: 0.14em;
 }
 
 .platform-picker > p {
   margin: 0 0 0.8rem;
   color: #776d70;
-  font-size: 0.78rem;
+  font-size: clamp(0.94rem, 0.95vw, 1.05rem);
+  line-height: 1.55;
 }
 
 .platform-options {
@@ -244,7 +251,7 @@
   padding: 0.35rem 0;
   color: #b9adb1 !important;
   font-family: var(--sans) !important;
-  font-size: 0.72rem !important;
+  font-size: clamp(0.9rem, 0.92vw, 1rem) !important;
   letter-spacing: 0.02em !important;
   text-transform: none;
   cursor: pointer;
@@ -261,8 +268,8 @@
 .platform-check {
   position: relative;
   flex: 0 0 auto;
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border: 1px solid #79676d;
   border-radius: 50%;
   background: rgba(16, 10, 12, 0.72);
@@ -330,12 +337,13 @@
   min-height: 1.15rem;
   margin: 0.35rem 0 0 !important;
   color: #d75b78 !important;
-  font-size: 0.7rem !important;
+  font-size: 0.86rem !important;
 }
 
 .inquiry-form .button {
   justify-self: start;
   margin-top: 0.45rem;
+  font-size: 0.8rem;
 }
 
 .inquiry-form .button:disabled {
@@ -350,14 +358,15 @@
 .turnstile-loading {
   margin: 0;
   color: #857a7d;
-  font-size: 0.75rem;
+  font-size: 0.92rem;
 }
 
 .form-status {
   min-height: 1.5rem;
   margin: 1.2rem 0 0;
   color: #a99da0;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .form-status.success {
@@ -414,7 +423,7 @@
   }
 
   .platform-option {
-    padding: 0.25rem 0;
+    padding: 0.35rem 0;
   }
 }
 
