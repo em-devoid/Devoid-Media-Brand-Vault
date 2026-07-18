@@ -63,7 +63,7 @@ export default function Home() {
           <a href="#studio" onClick={() => setMenuOpen(false)}>Studio</a>
           <a href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</a>
         </nav>
-        <a className="header-cta" href="/collaborate">Start a project <span>↗</span></a>
+        <a className="header-cta" href="/collaborate">Collaborate <span>↗</span></a>
         <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu"><span /><span /></button>
       </header>
 
@@ -167,7 +167,7 @@ export default function Home() {
 
       </main>
 
-      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is <span className="accent-text">beautifully ruthless</span></p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="#top">Back to top ↑</a></div></footer>
+      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is <span className="accent-text">beautifully ruthless</span></p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a className="back-to-top" href="#top">Back to top ↑</a></div></footer>
     </>
   );
 }

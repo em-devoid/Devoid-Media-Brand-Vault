@@ -95,3 +95,21 @@
     font-size: 1.2rem;
   }
 }
+
+/* Keep every jewel cluster on one shared axis while preserving a generous
+   flexible gap between each title and its description. */
+.service-list article {
+  grid-template-columns: 8% 28% minmax(140px, 1fr) minmax(0, 43%);
+}
+
+.service-list article .service-ornament,
+.service-list article:nth-child(even) .service-ornament {
+  opacity: 0.88;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .service-list article {
+    grid-template-columns: 10% minmax(0, 1fr) auto;
+  }
+}

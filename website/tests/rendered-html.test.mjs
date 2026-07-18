@@ -244,7 +244,9 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(page, /work-column work-column-/);
   assert.match(page, /title: "Velvet Room"[\s\S]*?format: "landscape"/);
   assert.match(page, /beautifully ruthless<\/span>/);
-  assert.match(page, /href="\/collaborate"/);
+  assert.match(page, /className="header-cta" href="\/collaborate">Collaborate/);
+  assert.match(page, /className="back-to-top" href="#top"/);
+  assert.doesNotMatch(page, />Start a project/);
   assert.match(collaborationPage, /collabs@devoidmediallc\.com/);
   assert.match(collaborationPage, /partnerships@devoidmediallc\.com/);
   assert.match(collaborationPage, /press@devoidmediallc\.com/);
@@ -281,5 +283,5 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(atmosphereCss, /\.collaboration-page \.contact::after/);
   assert.match(atmosphereCss, /\.philosophy-mark\s*\{\s*display: none;/);
   assert.match(atmosphereCss, /@media \(max-width: 580px\)/);
-  assert.match(serviceOrnamentsCss, /grid-template-columns:\s*8% max-content minmax\(140px, 1fr\) minmax\(0, 43%\)/);
+  assert.match(serviceOrnamentsCss, /grid-template-columns:\s*8% 28% minmax\(140px, 1fr\) minmax\(0, 43%\)/);
 });
