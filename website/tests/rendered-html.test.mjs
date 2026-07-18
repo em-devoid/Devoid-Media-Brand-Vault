@@ -44,6 +44,8 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /href="\/collaborate"/);
   assert.match(html, />Portfolio<\/a>/);
   assert.match(html, /02 \/ Portfolio/);
+  assert.match(html, /Every frame is part confession, part invitation⎯/);
+  assert.match(html, /come closer, look longer\.\.\. recognize something\./);
   assert.doesNotMatch(html, />Selected work<\/a>/i);
   assert.doesNotMatch(html, /02 \/ Selected work/i);
   assert.match(html, /Where authenticity is beautifully ruthless/);

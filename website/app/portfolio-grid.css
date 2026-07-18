@@ -3,6 +3,11 @@
   gap: clamp(3rem, 4vw, 4.5rem) clamp(1rem, 2vw, 1.75rem);
 }
 
+.section-head > .portfolio-intro {
+  width: min(48vw, 680px);
+  max-width: 680px;
+}
+
 .work-card,
 .work-card:nth-child(3),
 .work-card:nth-child(5) {
@@ -26,6 +31,11 @@
 }
 
 @media (max-width: 900px) {
+  .section-head > .portfolio-intro {
+    width: 100%;
+    max-width: 680px;
+  }
+
   .work-card.portrait,
   .work-card.landscape {
     grid-column: 1 / -1;
