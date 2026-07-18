@@ -1,25 +1,35 @@
-/* Quiet, image-led ornamentation kept inside true negative space. */
+/* A restrained field of mandalas, cropped into the site's negative space. */
+.philosophy,
 .work,
-.services,
 .studio-copy,
+.services,
+.statement,
 .collaboration-page .contact {
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
 
+.philosophy > *,
 .work > *,
-.services > *,
 .studio-copy > *,
+.services > *,
+.statement > *,
 .collaboration-page .contact > * {
   position: relative;
   z-index: 1;
 }
 
+.philosophy::before,
 .work::before,
-.services::before,
+.work::after,
+.studio-copy::before,
 .studio-copy::after,
-.collaboration-page .contact::before {
+.services::before,
+.services::after,
+.statement::before,
+.collaboration-page .contact::before,
+.collaboration-page .contact::after {
   content: "";
   position: absolute;
   z-index: 0;
@@ -29,88 +39,171 @@
   pointer-events: none;
 }
 
+.philosophy::before {
+  left: -15vw;
+  bottom: -24%;
+  width: clamp(500px, 46vw, 760px);
+  opacity: 0.042;
+  transform: rotate(11deg);
+}
+
 .work::before {
-  top: 30%;
+  top: 8%;
   right: -22vw;
   width: clamp(520px, 54vw, 900px);
-  opacity: 0.055;
+  opacity: 0.052;
   transform: rotate(-7deg);
 }
 
-.services::before {
-  top: 50%;
-  right: -18vw;
-  width: clamp(480px, 48vw, 760px);
-  opacity: 0.05;
-  transform: translateY(-50%) rotate(8deg);
+.work::after {
+  left: -18vw;
+  bottom: 12%;
+  width: clamp(430px, 42vw, 700px);
+  opacity: 0.038;
+  transform: rotate(14deg);
+}
+
+.studio-copy::before {
+  top: -18%;
+  right: -23%;
+  width: clamp(330px, 31vw, 520px);
+  opacity: 0.045;
+  transform: rotate(8deg);
 }
 
 .studio-copy::after {
-  right: -30%;
-  bottom: -22%;
-  width: clamp(430px, 40vw, 680px);
-  opacity: 0.034;
+  left: -28%;
+  bottom: -25%;
+  width: clamp(420px, 40vw, 680px);
+  opacity: 0.032;
   transform: rotate(-10deg);
+}
+
+.services::before {
+  top: 32%;
+  right: -18vw;
+  width: clamp(480px, 48vw, 760px);
+  opacity: 0.048;
+  transform: rotate(8deg);
+}
+
+.services::after {
+  left: -14vw;
+  bottom: -26%;
+  width: clamp(370px, 35vw, 580px);
+  opacity: 0.034;
+  transform: rotate(-13deg);
+}
+
+.statement::before {
+  right: -13vw;
+  bottom: -42%;
+  width: clamp(460px, 43vw, 720px);
+  opacity: 0.045;
+  transform: rotate(12deg);
 }
 
 .collaboration-page .contact::before {
   left: -20vw;
-  bottom: -12rem;
+  top: 18%;
   width: clamp(500px, 52vw, 840px);
   opacity: 0.04;
   transform: rotate(10deg);
 }
 
-/* Preserve the original single lunar figure in Philosophy without duplication. */
+.collaboration-page .contact::after {
+  right: -17vw;
+  bottom: -12rem;
+  width: clamp(430px, 43vw, 690px);
+  opacity: 0.036;
+  transform: rotate(-9deg);
+}
+
+/* The atmospheric system is mandala-only. */
 .philosophy-mark {
-  opacity: 0.08;
+  display: none;
 }
 
 @media (max-width: 900px) {
+  .philosophy::before {
+    left: -42vw;
+  }
+
   .work::before {
-    top: 38%;
     right: -42vw;
+  }
+
+  .work::after {
+    left: -42vw;
+  }
+
+  .studio-copy::before {
+    right: -44%;
+  }
+
+  .studio-copy::after {
+    left: -48%;
   }
 
   .services::before {
     right: -42vw;
   }
 
-  .studio-copy::after {
-    right: -48%;
+  .services::after {
+    left: -40vw;
+  }
+
+  .statement::before {
+    right: -40vw;
   }
 
   .collaboration-page .contact::before {
     left: -45vw;
   }
+
+  .collaboration-page .contact::after {
+    right: -43vw;
+  }
 }
 
 @media (max-width: 580px) {
+  .philosophy::before,
   .work::before,
-  .services::before {
-    width: 430px;
-    opacity: 0.035;
+  .work::after,
+  .services::before,
+  .services::after,
+  .statement::before {
+    width: 420px;
+    opacity: 0.03;
   }
 
-  .work::before {
-    right: -68vw;
+  .philosophy::before,
+  .work::after,
+  .services::after {
+    left: -72vw;
   }
 
-  .services::before {
+  .work::before,
+  .services::before,
+  .statement::before {
     right: -72vw;
   }
 
+  .studio-copy::before,
   .studio-copy::after,
-  .collaboration-page .contact::before {
+  .collaboration-page .contact::before,
+  .collaboration-page .contact::after {
     width: 390px;
     opacity: 0.024;
   }
 
-  .studio-copy::after {
+  .studio-copy::before,
+  .collaboration-page .contact::after {
     right: -78%;
   }
 
+  .studio-copy::after,
   .collaboration-page .contact::before {
-    left: -78vw;
+    left: -78%;
   }
 }

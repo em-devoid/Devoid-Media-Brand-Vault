@@ -271,5 +271,9 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(atmosphereCss, /url\("\/media\/ornament-mandala-v2\.png"\)/);
   assert.doesNotMatch(atmosphereCss, /repeating-conic-gradient/);
   assert.doesNotMatch(atmosphereCss, /url\("\/media\/logo-mark\.png"\)/);
+  assert.match(atmosphereCss, /\.work::after/);
+  assert.match(atmosphereCss, /\.statement::before/);
+  assert.match(atmosphereCss, /\.collaboration-page \.contact::after/);
+  assert.match(atmosphereCss, /\.philosophy-mark\s*\{\s*display: none;/);
   assert.match(atmosphereCss, /@media \(max-width: 580px\)/);
 });
