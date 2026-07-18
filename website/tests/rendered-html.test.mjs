@@ -223,7 +223,7 @@ test("routes business and press inquiries to the shared info inbox", async (t) =
 });
 
 test("keeps the final brand typography wired to local assets", async () => {
-  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss, accentsCss] = await Promise.all([
+  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss, accentsCss, atmosphereCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/collaborate/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
@@ -234,6 +234,7 @@ test("keeps the final brand typography wired to local assets", async () => {
     readFile(new URL("../app/contact-forms.css", import.meta.url), "utf8"),
     readFile(new URL("../app/portfolio-grid.css", import.meta.url), "utf8"),
     readFile(new URL("../app/text-accents.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/atmosphere.css", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /className="entry-copy"/);
@@ -248,6 +249,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.doesNotMatch(collaborationPage, /window\.location\.href\s*=\s*`mailto:/);
   assert.match(layout, /import "\.\/footer-tagline\.css"/);
   assert.match(layout, /import "\.\/portfolio-grid\.css"/);
+  assert.match(layout, /import "\.\/atmosphere\.css"/);
   assert.match(entryCss, /font-family:\s*"Waters Gothic"/);
   assert.match(heroCss, /font-family:\s*"Hanford Script"/);
   assert.match(heroCss, /url\("\/fonts\/hanford-script\.ttf"\)/);
@@ -266,4 +268,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(accentsCss, /\.work-card\.work-3 h3/);
   assert.match(accentsCss, /\.service-list article:nth-child\(even\) h3/);
   assert.match(accentsCss, /\.service-list article:nth-child\(odd\) p/);
+  assert.match(atmosphereCss, /url\("\/media\/logo-mark\.png"\)/);
+  assert.match(atmosphereCss, /repeating-conic-gradient/);
+  assert.match(atmosphereCss, /@media \(max-width: 580px\)/);
 });
