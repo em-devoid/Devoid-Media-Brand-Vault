@@ -44,6 +44,25 @@
   color: var(--muted);
 }
 
+.contact-follow-instead {
+  margin-top: 1.35rem;
+  color: #95888d;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+.contact-follow-instead a {
+  margin-left: 0.4rem;
+  color: #d04a68;
+  border-bottom: 1px solid rgba(208, 74, 104, 0.55);
+}
+
+.contact-follow-instead a:hover,
+.contact-follow-instead a:focus-visible {
+  color: #eddde2;
+  border-bottom-color: rgba(237, 221, 226, 0.65);
+}
+
 .contact-paths {
   display: grid;
   gap: 0.8rem;

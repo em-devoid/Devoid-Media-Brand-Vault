@@ -202,6 +202,9 @@ export default function CollaboratePage() {
             <p className="eyebrow">Collaborate / Devoid Media</p>
             <h1>Choose your<br /><span className="accent-text">way in.</span></h1>
             <p><span className="accent-text">Two doors, one studio.</span> Choose the path that best matches who you are and what you want to create.</p>
+            <p className="contact-follow-instead">
+              Not ready to inquire? <Link href="/socials">Follow instead on Socials ↗</Link>
+            </p>
 
             <div className="contact-paths" role="tablist" aria-label="Choose an inquiry type">
               <button
