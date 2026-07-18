@@ -58,6 +58,8 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /class="accent-text">em\.devoid<\/span> is the artist\./);
   assert.match(html, /class="accent-text">Devoid Media<\/span> is the studio built to protect and expand the work\./);
   assert.match(html, /For <span class="accent-text">aligned<\/span> brands, photographers, publications, artists, and audiences\./);
+  assert.equal((html.match(/class="service-ornament"/g) ?? []).length, 4);
+  assert.match(html, /class="service-ornament" aria-hidden="true"/);
   assert.match(html, /honest work made with intention, refined without losing artistic identity\./);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });

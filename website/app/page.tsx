@@ -139,7 +139,7 @@ export default function Home() {
 
         <section className="services">
           <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to <span className="accent-text">create</span></h2></div><p>For <span className="accent-text">aligned</span> brands, photographers, publications, artists, and audiences.</p></div>
-          <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+          <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><div className="service-ornament" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i><i>✦</i><i>✦</i></div><p>{description}</p></article>)}</div>
         </section>
 
         <section className="statement">

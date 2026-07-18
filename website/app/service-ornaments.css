@@ -1,0 +1,97 @@
+.service-list article {
+  grid-template-columns: 8% 24% minmax(170px, 17%) 1fr;
+}
+
+.service-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.42rem, 0.65vw, 0.78rem);
+  min-width: 0;
+  color: #cc3154;
+  opacity: 0.88;
+}
+
+.service-ornament::before,
+.service-ornament::after {
+  content: "";
+  flex: 1 1 1.8rem;
+  max-width: 2.8rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 58, 91, 0.72));
+}
+
+.service-ornament::after {
+  background: linear-gradient(90deg, rgba(196, 58, 91, 0.72), transparent);
+}
+
+.service-ornament i {
+  display: block;
+  flex: 0 0 auto;
+  font-family: "Times New Roman", serif;
+  font-size: clamp(0.78rem, 0.92vw, 1.12rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 0.65rem rgba(196, 58, 91, 0.32);
+}
+
+.service-ornament i:nth-child(2),
+.service-ornament i:nth-child(4) {
+  color: #e05272;
+  font-size: clamp(1rem, 1.15vw, 1.4rem);
+}
+
+.service-ornament i:nth-child(3) {
+  color: #f06987;
+  font-size: clamp(1.22rem, 1.42vw, 1.72rem);
+  text-shadow: 0 0 0.9rem rgba(224, 82, 114, 0.5);
+}
+
+.service-list article:nth-child(even) .service-ornament {
+  opacity: 0.72;
+  transform: scale(0.94);
+}
+
+@media (max-width: 900px) {
+  .service-list article {
+    grid-template-columns: 10% minmax(0, 1fr) auto;
+  }
+
+  .service-ornament {
+    justify-content: flex-end;
+    min-width: clamp(135px, 25vw, 210px);
+  }
+
+  .service-list article p {
+    grid-column: 2 / 4;
+  }
+}
+
+@media (max-width: 580px) {
+  .service-list article {
+    gap: 0.8rem 1rem;
+    padding: 1.7rem 0;
+  }
+
+  .service-ornament {
+    min-width: 92px;
+    gap: 0.38rem;
+  }
+
+  .service-ornament::before,
+  .service-ornament::after,
+  .service-ornament i:first-of-type,
+  .service-ornament i:last-of-type {
+    display: none;
+  }
+
+  .service-ornament i:nth-child(2),
+  .service-ornament i:nth-child(4) {
+    font-size: 0.9rem;
+  }
+
+  .service-ornament i:nth-child(3) {
+    font-size: 1.2rem;
+  }
+}
