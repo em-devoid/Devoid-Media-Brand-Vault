@@ -1,5 +1,5 @@
 .service-list article {
-  grid-template-columns: 8% 24% minmax(170px, 17%) 1fr;
+  grid-template-columns: 8% max-content minmax(140px, 1fr) minmax(0, 43%);
 }
 
 .service-ornament {

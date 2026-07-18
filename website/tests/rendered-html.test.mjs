@@ -225,7 +225,7 @@ test("routes business and press inquiries to the shared info inbox", async (t) =
 });
 
 test("keeps the final brand typography wired to local assets", async () => {
-  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss, accentsCss, atmosphereCss] = await Promise.all([
+  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss, accentsCss, atmosphereCss, serviceOrnamentsCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/collaborate/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
@@ -237,6 +237,7 @@ test("keeps the final brand typography wired to local assets", async () => {
     readFile(new URL("../app/portfolio-grid.css", import.meta.url), "utf8"),
     readFile(new URL("../app/text-accents.css", import.meta.url), "utf8"),
     readFile(new URL("../app/atmosphere.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/service-ornaments.css", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /className="entry-copy"/);
@@ -271,6 +272,8 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(accentsCss, /\.service-list article:nth-child\(even\) h3/);
   assert.match(accentsCss, /\.service-list article:nth-child\(odd\) p/);
   assert.match(atmosphereCss, /url\("\/media\/ornament-mandala-v2\.png"\)/);
+  assert.match(atmosphereCss, /\.entry::before/);
+  assert.match(atmosphereCss, /\.entry::after/);
   assert.doesNotMatch(atmosphereCss, /repeating-conic-gradient/);
   assert.doesNotMatch(atmosphereCss, /url\("\/media\/logo-mark\.png"\)/);
   assert.match(atmosphereCss, /\.work::after/);
@@ -278,4 +281,5 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(atmosphereCss, /\.collaboration-page \.contact::after/);
   assert.match(atmosphereCss, /\.philosophy-mark\s*\{\s*display: none;/);
   assert.match(atmosphereCss, /@media \(max-width: 580px\)/);
+  assert.match(serviceOrnamentsCss, /grid-template-columns:\s*8% max-content minmax\(140px, 1fr\) minmax\(0, 43%\)/);
 });

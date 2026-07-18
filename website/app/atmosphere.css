@@ -1,4 +1,43 @@
 /* A restrained field of mandalas, cropped into the site's negative space. */
+.entry {
+  isolation: isolate;
+}
+
+.entry::before,
+.entry::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  aspect-ratio: 1;
+  background: url("/media/ornament-mandala-v2.png") center / contain no-repeat;
+  filter: grayscale(1) sepia(0.9) saturate(7) hue-rotate(300deg) contrast(1.08);
+  pointer-events: none;
+}
+
+.entry::before {
+  left: -17vw;
+  top: -19vh;
+  width: clamp(460px, 42vw, 720px);
+  opacity: 0.105;
+  transform: rotate(16deg);
+}
+
+.entry::after {
+  right: -18vw;
+  bottom: -23vh;
+  width: clamp(500px, 45vw, 780px);
+  opacity: 0.095;
+  transform: rotate(-11deg);
+}
+
+.entry .entry-glow {
+  z-index: 0;
+}
+
+.entry > *:not(.entry-glow) {
+  z-index: 1;
+}
+
 .philosophy,
 .work,
 .studio-copy,
@@ -125,6 +164,20 @@
 }
 
 @media (max-width: 900px) {
+  .entry::before {
+    left: -34vw;
+    top: -12vh;
+    width: 560px;
+    opacity: 0.08;
+  }
+
+  .entry::after {
+    right: -38vw;
+    bottom: -13vh;
+    width: 600px;
+    opacity: 0.075;
+  }
+
   .philosophy::before {
     left: -25vw;
   }
@@ -167,6 +220,20 @@
 }
 
 @media (max-width: 580px) {
+  .entry::before {
+    left: -49vw;
+    top: -5vh;
+    width: 330px;
+    opacity: 0.065;
+  }
+
+  .entry::after {
+    right: -52vw;
+    bottom: -4vh;
+    width: 350px;
+    opacity: 0.06;
+  }
+
   .philosophy::before,
   .work::before,
   .work::after,
