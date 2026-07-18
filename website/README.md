@@ -31,11 +31,17 @@ pnpm run build
 
 ## Deployment
 
-The site is configured for OpenAI Sites. Its current private production address is:
+The repository is configured to publish to the owner-only preview site by default:
 
-<https://devoid-media-studio.em-devoid.chatgpt.site>
+<https://devoid-media-private-preview.em-devoid.chatgpt.site>
 
-The custom domain `devoidmediallc.com` can be activated after its required DNS records are configured.
+Approved releases are promoted separately to the public production site:
+
+<https://devoidmediallc.com>
+
+The production Sites project configuration is preserved in
+`.openai/production-hosting.json`. Do not publish to it until the owner approves
+the preview for release.
 
 ## Archive
 
