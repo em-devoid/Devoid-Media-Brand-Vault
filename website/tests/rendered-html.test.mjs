@@ -218,6 +218,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   ]);
 
   assert.match(page, /className="entry-copy"/);
+  assert.match(page, /title: "Velvet Room"[\s\S]*?format: "landscape"/);
   assert.match(page, /Where authenticity is beautifully ruthless/);
   assert.match(page, /href="\/collaborate"/);
   assert.match(collaborationPage, /collabs@devoidmediallc\.com/);
@@ -226,6 +227,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(collaborationPage, /fetch\("\/api\/inquiry"/);
   assert.doesNotMatch(collaborationPage, /window\.location\.href\s*=\s*`mailto:/);
   assert.match(layout, /import "\.\/footer-tagline\.css"/);
+  assert.match(layout, /import "\.\/portfolio-grid\.css"/);
   assert.match(entryCss, /font-family:\s*"Waters Gothic"/);
   assert.match(statementCss, /font-family:\s*"Hanford Script"/);
   assert.match(statementCss, /url\("\/fonts\/hanford-script\.ttf"\)/);

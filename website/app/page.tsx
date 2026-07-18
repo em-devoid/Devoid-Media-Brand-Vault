@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 
 const works = [
-  { src: "/media/editorial-wide.jpg", title: "Crimson Study", kind: "Boudoir / Art Direction", wide: true },
-  { src: "/media/editorial-standing.jpg", title: "After Hours", kind: "Editorial Modeling" },
-  { src: "/media/editorial-bound.png", title: "Bound in Red", kind: "Visual Storytelling" },
-  { src: "/media/editorial-fishnets.png", title: "Second Skin", kind: "Self-Portraiture", wide: true },
-  { src: "/media/editorial-splits.png", title: "Velvet Room", kind: "Cinematic Portraiture" },
-  { src: "/media/editorial-arch.jpg", title: "Nocturne", kind: "Intimate Editorial" },
+  { src: "/media/editorial-wide.jpg", title: "Crimson Study", kind: "Boudoir / Art Direction", format: "landscape" },
+  { src: "/media/editorial-standing.jpg", title: "After Hours", kind: "Editorial Modeling", format: "portrait" },
+  { src: "/media/editorial-bound.png", title: "Bound in Red", kind: "Visual Storytelling", format: "portrait" },
+  { src: "/media/editorial-fishnets.png", title: "Second Skin", kind: "Self-Portraiture", format: "landscape" },
+  { src: "/media/editorial-splits.png", title: "Velvet Room", kind: "Cinematic Portraiture", format: "landscape" },
+  { src: "/media/editorial-arch.jpg", title: "Nocturne", kind: "Intimate Editorial", format: "portrait" },
 ];
 
 const services = [
@@ -107,7 +107,7 @@ export default function Home() {
         <section className="work" id="work">
           <div className="section-head"><div><p className="eyebrow">02 / Selected work</p><h2 className="ghost-section-title">Archives of<br />the void</h2></div><p>Every frame is part confession, part invitation: come closer, look longer, recognize something.</p></div>
           <div className="work-grid">
-            {works.map((work, index) => <figure className={work.wide ? "work-card wide" : "work-card"} key={work.title}>
+            {works.map((work, index) => <figure className={`work-card ${work.format}`} key={work.title}>
               <div className="image-wrap"><img src={work.src} alt={`${work.title} — ${work.kind}`} /><span>0{index + 1}</span></div>
               <figcaption><div><p>{work.kind}</p><h3>{work.title}</h3></div><span>View study ↗</span></figcaption>
             </figure>)}

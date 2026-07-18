@@ -1,0 +1,47 @@
+.work-grid {
+  align-items: start;
+  gap: clamp(3rem, 4vw, 4.5rem) clamp(1rem, 2vw, 1.75rem);
+}
+
+.work-card,
+.work-card:nth-child(3),
+.work-card:nth-child(5) {
+  margin-top: 0;
+}
+
+.work-card.portrait {
+  grid-column: span 5;
+}
+
+.work-card.landscape {
+  grid-column: span 7;
+}
+
+.work-card.portrait .image-wrap {
+  aspect-ratio: 1;
+}
+
+.work-card.landscape .image-wrap {
+  aspect-ratio: 7 / 5;
+}
+
+@media (max-width: 900px) {
+  .work-card.portrait,
+  .work-card.landscape {
+    grid-column: 1 / -1;
+  }
+
+  .work-card.portrait .image-wrap {
+    aspect-ratio: 4 / 5;
+  }
+
+  .work-card.landscape .image-wrap {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (max-width: 580px) {
+  .work-card.landscape .image-wrap {
+    aspect-ratio: 3 / 2;
+  }
+}
