@@ -1,0 +1,52 @@
+:root {
+  --crimson-text: #c43a5b;
+  --crimson-text-soft: #ae2d4b;
+}
+
+.accent-text {
+  color: var(--crimson-text);
+}
+
+.hero-title-desktop > span:last-child,
+.hero-title-mobile > span:nth-child(n + 3) {
+  color: var(--crimson-text);
+}
+
+.work-card.work-2 h3,
+.work-card.work-5 h3,
+.service-list article:nth-child(even) h3 {
+  color: var(--crimson-text-soft);
+}
+
+.statement blockquote strong:last-child,
+.statement-seen,
+.statement-belonging em,
+.statement-release em {
+  color: var(--crimson-text);
+}
+
+.contact-path.active strong,
+.platform-option input:checked ~ .platform-name {
+  color: var(--crimson-text) !important;
+}
+
+.inquiry-form label:focus-within,
+.platform-picker:focus-within legend {
+  color: #d3506f;
+}
+
+.contact-direct a:hover,
+.text-link:hover,
+footer a:hover {
+  color: #e05272;
+}
+
+@media (max-width: 580px) {
+  .hero-title-mobile > span:nth-child(3) {
+    color: var(--silver);
+  }
+
+  .hero-title-mobile > span:last-child {
+    color: var(--crimson-text);
+  }
+}

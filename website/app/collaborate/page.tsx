@@ -199,8 +199,8 @@ export default function CollaboratePage() {
         <section className="contact" id="contact">
           <div className="contact-intro">
             <p className="eyebrow">Collaborate / Devoid Media</p>
-            <h1>Choose your<br />way in.</h1>
-            <p>Two doors, one studio. Choose the path that best matches who you are and what you want to create.</p>
+            <h1>Choose your<br /><span className="accent-text">way in.</span></h1>
+            <p><span className="accent-text">Two doors, one studio.</span> Choose the path that best matches who you are and what you want to create.</p>
 
             <div className="contact-paths" role="tablist" aria-label="Choose an inquiry type">
               <button
@@ -239,7 +239,9 @@ export default function CollaboratePage() {
           <div className="contact-panel">
             <div className="inquiry-heading">
               <p className="eyebrow">{inquiryType === "creator" ? "Creator / individual" : "Brand / business / press"}</p>
-              <h2>{inquiryType === "creator" ? "Let’s make something together." : "Bring me the idea you can’t shake."}</h2>
+              <h2>{inquiryType === "creator"
+                ? <>Let’s make <span className="accent-text">something together.</span></>
+                : <>Bring me the idea <span className="accent-text">you can’t shake.</span></>}</h2>
               <p>{inquiryType === "creator"
                 ? "Tell me where you create, how to find you, and what kind of collaboration you have in mind."
                 : "Tell me who you represent, what you are building, and where em.devoid or Devoid Media fits into the vision."}</p>
@@ -358,7 +360,7 @@ export default function CollaboratePage() {
         onReady={() => setTurnstileReady(true)}
       />
 
-      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is beautifully ruthless</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><Link href="/">Back to home ↑</Link></div></footer>
+      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is <span className="accent-text">beautifully ruthless</span></p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><Link href="/">Back to home ↑</Link></div></footer>
     </>
   );
 }

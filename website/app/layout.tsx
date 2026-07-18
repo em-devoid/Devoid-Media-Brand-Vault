@@ -10,6 +10,7 @@ import "./card-headings.css";
 import "./statement-copy.css";
 import "./contact-forms.css";
 import "./portfolio-grid.css";
+import "./text-accents.css";
 
 export const metadata: Metadata = {
   title: "Devoid Media — Art Without Apology",

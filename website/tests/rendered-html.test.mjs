@@ -36,11 +36,14 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /<title>Devoid Media — Art Without Apology<\/title>/i);
   assert.match(html, /role="dialog"/);
   assert.match(html, /Independent creative studio · 21\+/);
-  assert.match(html, /Enter the Void/);
+  assert.match(html, /aria-label="Enter the Void"/);
   assert.match(html, /I am 21\+/);
   assert.match(html, /Art for the parts of us that refuse to disappear\./);
   assert.match(html, /We do not create to perform an identity\./);
   assert.match(html, /Let yourself be seen\./);
+  assert.match(html, /class="accent-text">Void<\/span>/);
+  assert.match(html, /class="accent-text">the void<\/span>/);
+  assert.match(html, /class="accent-text">We create to express one\.<\/strong>/);
   assert.match(html, /href="\/collaborate"/);
   assert.match(html, />Portfolio<\/a>/);
   assert.match(html, /02 \/ Portfolio/);
@@ -50,7 +53,10 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.doesNotMatch(html, /02 \/ Selected work/i);
   assert.doesNotMatch(html, /View study/i);
   assert.doesNotMatch(html, /<b>↗<\/b>/);
-  assert.match(html, /Where authenticity is beautifully ruthless/);
+  assert.match(html, /Where authenticity is/);
+  assert.match(html, /class="accent-text">beautifully ruthless<\/span>/);
+  assert.match(html, /Devoid Media is the studio built to protect and expand the work\./);
+  assert.match(html, /honest work made with intention, refined without losing artistic identity\./);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });
 
@@ -71,6 +77,8 @@ test("server-renders the dedicated collaboration page", async () => {
   assert.match(html, /partnerships@devoidmediallc\.com/);
   assert.match(html, /press@devoidmediallc\.com/);
   assert.match(html, /Loading secure verification/);
+  assert.match(html, /class="accent-text">way in\.<\/span>/);
+  assert.match(html, /class="accent-text">something together\.<\/span>/);
 });
 
 test("exposes only the public Turnstile site key", async () => {
@@ -213,7 +221,7 @@ test("routes business and press inquiries to the shared info inbox", async (t) =
 });
 
 test("keeps the final brand typography wired to local assets", async () => {
-  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss] = await Promise.all([
+  const [page, collaborationPage, layout, entryCss, heroCss, statementCss, footerCss, contactCss, portfolioCss, accentsCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/collaborate/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
@@ -223,12 +231,13 @@ test("keeps the final brand typography wired to local assets", async () => {
     readFile(new URL("../app/footer-tagline.css", import.meta.url), "utf8"),
     readFile(new URL("../app/contact-forms.css", import.meta.url), "utf8"),
     readFile(new URL("../app/portfolio-grid.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/text-accents.css", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /className="entry-copy"/);
   assert.match(page, /work-column work-column-/);
   assert.match(page, /title: "Velvet Room"[\s\S]*?format: "landscape"/);
-  assert.match(page, /Where authenticity is beautifully ruthless/);
+  assert.match(page, /beautifully ruthless<\/span>/);
   assert.match(page, /href="\/collaborate"/);
   assert.match(collaborationPage, /collabs@devoidmediallc\.com/);
   assert.match(collaborationPage, /partnerships@devoidmediallc\.com/);
@@ -242,6 +251,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(heroCss, /url\("\/fonts\/hanford-script\.ttf"\)/);
   assert.match(statementCss, /font-family:\s*"Hanford Script"/);
   assert.match(statementCss, /url\("\/fonts\/hanford-script\.ttf"\)/);
+  assert.match(layout, /import "\.\/text-accents\.css"/);
   assert.match(statementCss, /font-family:\s*"Elemental"/);
   assert.match(footerCss, /font-family:\s*"ParmaPetit"/);
   assert.match(footerCss, /url\("\/fonts\/parma-petit-italic\.ttf"\)/);
@@ -249,4 +259,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(contactCss, /clamp\(1\.65rem,\s*2\.5vw,\s*2\.25rem\)[\s\S]*\/ 1\.08 var\(--display\)/);
   assert.match(contactCss, /\.platform-options[\s\S]*grid-template-columns:\s*repeat\(4/);
   assert.match(portfolioCss, /width:\s*clamp\(420px, 30vw, 560px\)/);
+  assert.match(accentsCss, /--crimson-text:\s*#c43a5b/);
+  assert.match(accentsCss, /\.hero-title-desktop\s*>\s*span:last-child/);
+  assert.match(accentsCss, /\.service-list article:nth-child\(even\) h3/);
 });

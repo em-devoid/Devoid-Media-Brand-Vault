@@ -48,7 +48,7 @@ export default function Home() {
           <img src="/media/logo-main.png" alt="Devoid Media" />
           <div className="entry-copy">
             <p className="eyebrow entry-kicker">Independent creative studio · 21+</p>
-            <h1 id="entry-title">Enter the Void</h1>
+            <h1 id="entry-title" aria-label="Enter the Void">Enter the <span className="accent-text">Void</span></h1>
             <p className="entry-notice">This site contains mature artistic themes. By entering, you confirm you are at least 21 years old.</p>
           </div>
           <button onClick={enter}>I am 21+</button>
@@ -85,7 +85,7 @@ export default function Home() {
                 <span>disappear.</span>
               </span>
             </h1>
-            <p className="lede">Boudoir. Dark romance. Intimate storytelling. A creative practice built on truth, freedom, and expression without apology.</p>
+            <p className="lede">Boudoir. <span className="accent-text">Dark romance.</span> Intimate storytelling. A creative practice built on truth, freedom, and expression without apology.</p>
             <div className="hero-actions">
               <a className="button primary" href="#work">Enter the archive</a>
               <a className="text-link" href="#philosophy">Discover the philosophy <span>↓</span></a>
@@ -102,15 +102,15 @@ export default function Home() {
             <p className="eyebrow">The founding truth</p>
             <h2>Devoid never meant empty.<br /><em>It meant free.</em></h2>
             <div className="philosophy-grid">
-              <p className="large">We do not create mirrors to reflect ourselves. We create them so others can recognize themselves.</p>
-              <div><p>Devoid Media does not exist to manufacture identity. It exists to protect the freedom to express it—to give language and image to truths people have lived long before they had words for them.</p><p>Truth before illusion. Originality without performance. Work refined until it could only have come from us.</p></div>
+              <p className="large">We do not create mirrors to reflect ourselves. We create them so others can <span className="accent-text">recognize themselves.</span></p>
+              <div><p>Devoid Media does not exist to manufacture identity. It exists to protect the <span className="accent-text">freedom to express it</span>—to give language and image to truths people have lived long before they had words for them.</p><p><span className="accent-text">Truth before illusion.</span> Originality without performance. Work refined until it could only have come from us.</p></div>
             </div>
           </div>
           <img className="philosophy-mark" src="/media/logo-mark.png" alt="" />
         </section>
 
         <section className="work" id="work">
-          <div className="section-head"><div><p className="eyebrow">02 / Portfolio</p><h2 className="ghost-section-title">Archives of<br />the void</h2></div><p className="portfolio-intro">Every frame is part confession, part invitation⎯<br />come closer, look longer... recognize something.</p></div>
+          <div className="section-head"><div><p className="eyebrow">02 / Portfolio</p><h2 className="ghost-section-title">Archives of<br /><span className="accent-text">the void</span></h2></div><p className="portfolio-intro">Every frame is part confession, part invitation⎯<br /><span className="accent-text">come closer, look longer... recognize something.</span></p></div>
           <div className="work-grid">
             {workColumns.map((column, columnIndex) => (
               <div className={`work-column work-column-${columnIndex + 1}`} key={`work-column-${columnIndex + 1}`}>
@@ -130,15 +130,15 @@ export default function Home() {
           <div className="studio-photo"><img src="/media/portrait.jpg" alt="em.devoid in a red editorial portrait" /></div>
           <div className="studio-copy">
             <p className="eyebrow">03 / The artist & the studio</p>
-            <h2 className="ghost-section-title">One vision.<br />Many forms.</h2>
-            <p className="intro">em.devoid is the artist. Devoid Media LLC is the studio built to protect and expand the work.</p>
-            <p>Across photography, modeling, adult content, literary fiction, and creative direction, the medium changes. The standard does not: honest work, made with intention, refined without complacency.</p>
+            <h2 className="ghost-section-title">One vision.<br /><span className="accent-text">Many forms.</span></h2>
+            <p className="intro"><span className="accent-text">em.devoid is the artist.</span> Devoid Media is the studio built to protect and expand the work.</p>
+            <p>Across photography, modeling, adult content, literary fiction, and creative direction, the medium changes. <span className="accent-text">The standard does not:</span> honest work made with intention, refined without losing artistic identity.</p>
             <a className="text-link" href="/collaborate">Work with Devoid Media <span>↗</span></a>
           </div>
         </section>
 
         <section className="services">
-          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to create</h2></div><p>For aligned brands, photographers, publications, artists, and audiences.</p></div>
+          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to <span className="accent-text">create</span></h2></div><p>For aligned brands, photographers, publications, <span className="accent-text">artists, and audiences.</span></p></div>
           <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
         </section>
 
@@ -148,7 +148,7 @@ export default function Home() {
             <p className="eyebrow">The Promise</p>
             <blockquote>
               <strong>We do not create to perform an identity.</strong>
-              <strong>We create to express one.</strong>
+              <strong className="accent-text">We create to express one.</strong>
             </blockquote>
             <div className="statement-lines">
               <p className="statement-belonging">
@@ -167,7 +167,7 @@ export default function Home() {
 
       </main>
 
-      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is beautifully ruthless</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="#top">Back to top ↑</a></div></footer>
+      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is <span className="accent-text">beautifully ruthless</span></p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="#top">Back to top ↑</a></div></footer>
     </>
   );
 }
