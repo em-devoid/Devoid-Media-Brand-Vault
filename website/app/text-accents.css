@@ -13,8 +13,13 @@
 }
 
 .work-card.work-2 h3,
+.work-card.work-3 h3,
 .work-card.work-5 h3,
 .service-list article:nth-child(even) h3 {
+  color: var(--crimson-text-soft);
+}
+
+.service-list article:nth-child(odd) p {
   color: var(--crimson-text-soft);
 }
 

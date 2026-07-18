@@ -55,7 +55,9 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.doesNotMatch(html, /<b>↗<\/b>/);
   assert.match(html, /Where authenticity is/);
   assert.match(html, /class="accent-text">beautifully ruthless<\/span>/);
-  assert.match(html, /Devoid Media is the studio built to protect and expand the work\./);
+  assert.match(html, /class="accent-text">em\.devoid<\/span> is the artist\./);
+  assert.match(html, /class="accent-text">Devoid Media<\/span> is the studio built to protect and expand the work\./);
+  assert.match(html, /For <span class="accent-text">aligned<\/span> brands, photographers, publications, artists, and audiences\./);
   assert.match(html, /honest work made with intention, refined without losing artistic identity\./);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });
@@ -261,5 +263,7 @@ test("keeps the final brand typography wired to local assets", async () => {
   assert.match(portfolioCss, /width:\s*clamp\(420px, 30vw, 560px\)/);
   assert.match(accentsCss, /--crimson-text:\s*#c43a5b/);
   assert.match(accentsCss, /\.hero-title-desktop\s*>\s*span:last-child/);
+  assert.match(accentsCss, /\.work-card\.work-3 h3/);
   assert.match(accentsCss, /\.service-list article:nth-child\(even\) h3/);
+  assert.match(accentsCss, /\.service-list article:nth-child\(odd\) p/);
 });

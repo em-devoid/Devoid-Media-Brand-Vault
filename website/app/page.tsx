@@ -131,14 +131,14 @@ export default function Home() {
           <div className="studio-copy">
             <p className="eyebrow">03 / The artist & the studio</p>
             <h2 className="ghost-section-title">One vision.<br /><span className="accent-text">Many forms.</span></h2>
-            <p className="intro"><span className="accent-text">em.devoid is the artist.</span> Devoid Media is the studio built to protect and expand the work.</p>
+            <p className="intro"><span className="accent-text">em.devoid</span> is the artist. <span className="accent-text">Devoid Media</span> is the studio built to protect and expand the work.</p>
             <p>Across photography, modeling, adult content, literary fiction, and creative direction, the medium changes. <span className="accent-text">The standard does not:</span> honest work made with intention, refined without losing artistic identity.</p>
             <a className="text-link" href="/collaborate">Work with Devoid Media <span>↗</span></a>
           </div>
         </section>
 
         <section className="services">
-          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to <span className="accent-text">create</span></h2></div><p>For aligned brands, photographers, publications, <span className="accent-text">artists, and audiences.</span></p></div>
+          <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to <span className="accent-text">create</span></h2></div><p>For <span className="accent-text">aligned</span> brands, photographers, publications, artists, and audiences.</p></div>
           <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
         </section>
 
