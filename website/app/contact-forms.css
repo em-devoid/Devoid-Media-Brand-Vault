@@ -338,6 +338,36 @@
   margin-top: 0.45rem;
 }
 
+.inquiry-form .button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.turnstile-field {
+  min-height: 65px;
+}
+
+.turnstile-loading {
+  margin: 0;
+  color: #857a7d;
+  font-size: 0.75rem;
+}
+
+.form-status {
+  min-height: 1.5rem;
+  margin: 1.2rem 0 0;
+  color: #a99da0;
+  font-size: 0.82rem;
+}
+
+.form-status.success {
+  color: #d6c9cd;
+}
+
+.form-status.error {
+  color: #d75b78;
+}
+
 @media (max-width: 900px) {
   .contact {
     grid-template-columns: 1fr;

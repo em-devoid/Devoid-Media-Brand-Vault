@@ -1,8 +1,32 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import Link from "next/link";
+import Script from "next/script";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 type InquiryType = "creator" | "professional";
+type SubmissionState = "idle" | "submitting" | "success" | "error";
+
+interface TurnstileApi {
+  render(
+    container: HTMLElement,
+    options: {
+      sitekey: string;
+      action: string;
+      theme: "dark";
+      callback: (token: string) => void;
+      "expired-callback": () => void;
+      "error-callback": () => void;
+    },
+  ): string;
+  remove(widgetId: string): void;
+}
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
 
 const creatorPlatforms = [
   "Instagram",
@@ -15,11 +39,73 @@ const creatorPlatforms = [
   "All",
 ];
 
+function TurnstileField({
+  siteKey,
+  action,
+  ready,
+  onToken,
+}: {
+  siteKey: string;
+  action: string;
+  ready: boolean;
+  onToken: (token: string) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ready || !siteKey || !containerRef.current || !window.turnstile) return;
+
+    const widgetId = window.turnstile.render(containerRef.current, {
+      sitekey: siteKey,
+      action,
+      theme: "dark",
+      callback: onToken,
+      "expired-callback": () => onToken(""),
+      "error-callback": () => onToken(""),
+    });
+
+    return () => window.turnstile?.remove(widgetId);
+  }, [action, onToken, ready, siteKey]);
+
+  return (
+    <div className="turnstile-field">
+      <div ref={containerRef} />
+      {!ready || !siteKey ? <p className="turnstile-loading">Loading secure verification…</p> : null}
+    </div>
+  );
+}
+
 export default function CollaboratePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [inquiryType, setInquiryType] = useState<InquiryType>("creator");
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [platformError, setPlatformError] = useState(false);
+  const [siteKey, setSiteKey] = useState("");
+  const [turnstileReady, setTurnstileReady] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [verificationKey, setVerificationKey] = useState(0);
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+  const [submissionMessage, setSubmissionMessage] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch("/api/inquiry/config", { signal: controller.signal })
+      .then(async (response) => {
+        const result = (await response.json()) as { siteKey?: string; error?: string };
+        if (!response.ok || !result.siteKey) {
+          throw new Error(result.error || "Form verification is unavailable.");
+        }
+        setSiteKey(result.siteKey);
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setSubmissionState("error");
+        setSubmissionMessage("Secure verification could not load. Please refresh and try again.");
+      });
+
+    return () => controller.abort();
+  }, []);
 
   const togglePlatform = (platform: string) => {
     setSelectedPlatforms((current) =>
@@ -30,9 +116,19 @@ export default function CollaboratePage() {
     setPlatformError(false);
   };
 
-  const submitInquiry = (event: FormEvent<HTMLFormElement>, type: InquiryType) => {
+  const chooseInquiryType = (type: InquiryType) => {
+    setInquiryType(type);
+    setPlatformError(false);
+    setTurnstileToken("");
+    setVerificationKey((current) => current + 1);
+    setSubmissionState("idle");
+    setSubmissionMessage("");
+  };
+
+  const submitInquiry = async (event: FormEvent<HTMLFormElement>, type: InquiryType) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const isCreator = type === "creator";
     const platforms = data.getAll("platform").map(String);
 
@@ -42,40 +138,60 @@ export default function CollaboratePage() {
       return;
     }
 
-    const recipient = isCreator ? "collabs@devoidmediallc.com" : "info@devoidmediallc.com";
-    const subject = isCreator
-      ? `Creator collaboration — ${data.get("handle")} via ${platforms.join(", ")}`
-      : `Professional inquiry — ${data.get("company")} — ${data.get("project")}`;
-    const details = isCreator
-      ? [
-          `Name: ${data.get("name")}`,
-          `Email: ${data.get("email")}`,
-          `Phone: ${data.get("phone") || "Not provided"}`,
-          `Preferred platforms: ${platforms.join(", ")}`,
-          `Social handle: ${data.get("handle")}`,
-        ]
-      : [
-          `Name: ${data.get("name")}`,
-          `Company / organization: ${data.get("company")}`,
-          `Email: ${data.get("email")}`,
-          `Phone: ${data.get("phone") || "Not provided"}`,
-          `Project type: ${data.get("project")}`,
-        ];
-    const body = [...details, "", `${data.get("message")}`].join("\n");
-    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (!turnstileToken) {
+      setSubmissionState("error");
+      setSubmissionMessage("Complete the secure verification before sending.");
+      return;
+    }
+
+    setSubmissionState("submitting");
+    setSubmissionMessage("");
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          type,
+          turnstileToken,
+          name: data.get("name"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          platforms,
+          handle: data.get("handle"),
+          company: data.get("company"),
+          project: data.get("project"),
+          message: data.get("message"),
+        }),
+      });
+      const result = (await response.json()) as { message?: string; error?: string };
+      if (!response.ok) throw new Error(result.error || "Your inquiry could not be sent.");
+
+      form.reset();
+      setSelectedPlatforms([]);
+      setTurnstileToken("");
+      setVerificationKey((current) => current + 1);
+      setSubmissionState("success");
+      setSubmissionMessage(result.message || "Your inquiry is on its way.");
+    } catch (error) {
+      setTurnstileToken("");
+      setVerificationKey((current) => current + 1);
+      setSubmissionState("error");
+      setSubmissionMessage(error instanceof Error ? error.message : "Your inquiry could not be sent.");
+    }
   };
 
   return (
     <>
       <header className="header collaboration-header">
-        <a className="brand" href="/" aria-label="Devoid Media home"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></a>
+        <Link className="brand" href="/" aria-label="Devoid Media home"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></Link>
         <nav className={menuOpen ? "open" : ""} aria-label="Main navigation">
-          <a href="/#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</a>
-          <a href="/#work" onClick={() => setMenuOpen(false)}>Selected work</a>
-          <a href="/#studio" onClick={() => setMenuOpen(false)}>Studio</a>
-          <a href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</a>
+          <Link href="/#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</Link>
+          <Link href="/#work" onClick={() => setMenuOpen(false)}>Selected work</Link>
+          <Link href="/#studio" onClick={() => setMenuOpen(false)}>Studio</Link>
+          <Link href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</Link>
         </nav>
-        <a className="header-cta" href="/">Back to the studio <span>↙</span></a>
+        <Link className="header-cta" href="/">Back to the studio <span>↙</span></Link>
         <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu"><span /><span /></button>
       </header>
 
@@ -93,7 +209,7 @@ export default function CollaboratePage() {
                 role="tab"
                 aria-selected={inquiryType === "creator"}
                 aria-controls="creator-inquiry"
-                onClick={() => setInquiryType("creator")}
+                onClick={() => chooseInquiryType("creator")}
               >
                 <span>01</span>
                 <strong>Creator collaboration</strong>
@@ -105,7 +221,7 @@ export default function CollaboratePage() {
                 role="tab"
                 aria-selected={inquiryType === "professional"}
                 aria-controls="professional-inquiry"
-                onClick={() => setInquiryType("professional")}
+                onClick={() => chooseInquiryType("professional")}
               >
                 <span>02</span>
                 <strong>Professional inquiry</strong>
@@ -169,7 +285,18 @@ export default function CollaboratePage() {
               </fieldset>
               <label>Social handle *<input name="handle" required placeholder="@yourhandle" /></label>
               <label>What do you want to create? *<textarea name="message" required rows={5} placeholder="Tell me about you, the collaboration, timing, location, and the energy you want to create…" /></label>
-              <button className="button primary" type="submit">Send collab request <span>↗</span></button>
+              {inquiryType === "creator" ? (
+                <TurnstileField
+                  key={`creator-${verificationKey}`}
+                  siteKey={siteKey}
+                  action="creator-inquiry"
+                  ready={turnstileReady}
+                  onToken={setTurnstileToken}
+                />
+              ) : null}
+              <button className="button primary" type="submit" disabled={submissionState === "submitting"}>
+                {submissionState === "submitting" ? "Sending…" : "Send collab request"} <span>↗</span>
+              </button>
             </form>
 
             <form
@@ -186,7 +313,7 @@ export default function CollaboratePage() {
                 <label>Email address *<input type="email" name="email" autoComplete="email" required placeholder="you@company.com" /></label>
                 <label>Phone number <span>(optional)</span><input type="tel" name="phone" autoComplete="tel" placeholder="(555) 555-5555" /></label>
               </div>
-              <label>What are we creating?
+              <label>What are we creating? *
                 <select name="project" required defaultValue="">
                   <option value="" disabled>Select a project type</option>
                   <option>Brand collaboration</option>
@@ -199,13 +326,39 @@ export default function CollaboratePage() {
                 </select>
               </label>
               <label>Tell me about the vision *<textarea name="message" required rows={5} placeholder="The idea, timing, scope, and why em.devoid or Devoid Media…" /></label>
-              <button className="button primary" type="submit">Send professional inquiry <span>↗</span></button>
+              {inquiryType === "professional" ? (
+                <TurnstileField
+                  key={`professional-${verificationKey}`}
+                  siteKey={siteKey}
+                  action="professional-inquiry"
+                  ready={turnstileReady}
+                  onToken={setTurnstileToken}
+                />
+              ) : null}
+              <button className="button primary" type="submit" disabled={submissionState === "submitting"}>
+                {submissionState === "submitting" ? "Sending…" : "Send professional inquiry"} <span>↗</span>
+              </button>
             </form>
+
+            <p
+              className={`form-status ${submissionState}`}
+              role={submissionState === "error" ? "alert" : "status"}
+              aria-live="polite"
+            >
+              {submissionMessage}
+            </p>
           </div>
         </section>
       </main>
 
-      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is beautifully ruthless</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><a href="/">Back to home ↑</a></div></footer>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        strategy="afterInteractive"
+        onLoad={() => setTurnstileReady(true)}
+        onReady={() => setTurnstileReady(true)}
+      />
+
+      <footer><div className="footer-wordmark"><img src="/media/logo-wordmark.png" alt="Devoid Media" /></div><p>Where authenticity is beautifully ruthless</p><div><span>© 2026 Devoid Media LLC</span><span>em.devoid is a registered trade name</span><Link href="/">Back to home ↑</Link></div></footer>
     </>
   );
 }
