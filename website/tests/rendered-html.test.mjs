@@ -47,6 +47,7 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /class="accent-text">the void<\/span>/);
   assert.match(html, /class="accent-text">We create to express one\.<\/strong>/);
   assert.match(html, /href="\/collaborate"/);
+  assert.match(html, /href="\/socials"/);
   assert.match(html, />Portfolio<\/a>/);
   assert.match(html, /02 \/ Portfolio/);
   assert.match(html, /Every frame is part confession, part invitation⎯/);
@@ -85,6 +86,25 @@ test("server-renders the dedicated collaboration page", async () => {
   assert.match(html, /Loading secure verification/);
   assert.match(html, /class="accent-text">way in\.<\/span>/);
   assert.match(html, /class="accent-text">something together\.<\/span>/);
+  assert.match(html, /id="top"/);
+  assert.match(html, /class="back-to-top" href="#top">Back to top ↑<\/a>/);
+});
+
+test("server-renders the dedicated socials page", async () => {
+  const response = await render("/socials");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Find me in/);
+  assert.match(html, /class="accent-text">the void\.<\/span>/);
+  assert.match(html, /id="main-channels-title">Main <span class="accent-text">channels<\/span>/);
+  assert.match(html, /id="friends-title">Friends of/);
+  assert.match(html, /instagram\.com\/em\.devoid/);
+  assert.match(html, /onlyfans\.com\/em\.devoid/);
+  assert.match(html, /unholyghost\.org/);
+  assert.match(html, /open\.spotify\.com\/artist\/1SslPfozi6GhP2JbSNoLTB/);
+  assert.equal((html.match(/<a class="social-card/g) ?? []).length, 10);
+  assert.match(html, /class="back-to-top" href="#top">Back to top ↑<\/a>/);
 });
 
 test("exposes only the public Turnstile site key", async () => {

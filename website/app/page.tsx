@@ -61,6 +61,7 @@ export default function Home() {
           <a href="#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</a>
           <a href="#work" onClick={() => setMenuOpen(false)}>Portfolio</a>
           <a href="#studio" onClick={() => setMenuOpen(false)}>Studio</a>
+          <a href="/socials" onClick={() => setMenuOpen(false)}>Socials</a>
           <a href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</a>
         </nav>
         <a className="header-cta" href="/collaborate">Collaborate <span>↗</span></a>

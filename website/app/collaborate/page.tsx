@@ -189,13 +189,14 @@ export default function CollaboratePage() {
           <Link href="/#philosophy" onClick={() => setMenuOpen(false)}>Philosophy</Link>
           <Link href="/#work" onClick={() => setMenuOpen(false)}>Portfolio</Link>
           <Link href="/#studio" onClick={() => setMenuOpen(false)}>Studio</Link>
+          <Link href="/socials" onClick={() => setMenuOpen(false)}>Socials</Link>
           <Link href="/collaborate" onClick={() => setMenuOpen(false)}>Collaborate</Link>
         </nav>
         <Link className="header-cta" href="/">Back to the studio <span>↙</span></Link>
         <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle menu"><span /><span /></button>
       </header>
 
-      <main className="collaboration-page">
+      <main className="collaboration-page" id="top">
         <section className="contact" id="contact">
           <div className="contact-intro">
             <p className="eyebrow">Collaborate / Devoid Media</p>
@@ -253,9 +254,9 @@ export default function CollaboratePage() {
               onSubmit={(event) => submitInquiry(event, "creator")}
               hidden={inquiryType !== "creator"}
             >
-              <div className="form-row">
-                <label>Your name *<input name="name" autoComplete="name" required placeholder="Your name" /></label>
-                <label>Email address *<input type="email" name="email" autoComplete="email" required placeholder="you@example.com" /></label>
+             <div className="form-row">
+                <label><span className="field-label">Your name *</span><input name="name" autoComplete="name" required placeholder="Your name" /></label>
+                <label><span className="field-label">Email address *</span><input type="email" name="email" autoComplete="email" required placeholder="you@example.com" /></label>
               </div>
               <label>Phone number <span>(optional)</span><input type="tel" name="phone" autoComplete="tel" placeholder="(555) 555-5555" /></label>
               <fieldset
@@ -307,13 +308,13 @@ export default function CollaboratePage() {
               onSubmit={(event) => submitInquiry(event, "professional")}
               hidden={inquiryType !== "professional"}
             >
-              <div className="form-row">
-                <label>Your name *<input name="name" autoComplete="name" required placeholder="Your name" /></label>
-                <label>Company / organization *<input name="company" autoComplete="organization" required placeholder="Company or organization" /></label>
+             <div className="form-row">
+                <label><span className="field-label">Your name *</span><input name="name" autoComplete="name" required placeholder="Your name" /></label>
+                <label><span className="field-label">Company / organization *</span><input name="company" autoComplete="organization" required placeholder="Company or organization" /></label>
               </div>
               <div className="form-row">
-                <label>Email address *<input type="email" name="email" autoComplete="email" required placeholder="you@company.com" /></label>
-                <label>Phone number <span>(optional)</span><input type="tel" name="phone" autoComplete="tel" placeholder="(555) 555-5555" /></label>
+                <label><span className="field-label">Email address *</span><input type="email" name="email" autoComplete="email" required placeholder="you@company.com" /></label>
+                <label><span className="field-label">Phone number <em>(optional)</em></span><input type="tel" name="phone" autoComplete="tel" placeholder="(555) 555-5555" /></label>
               </div>
               <label>What are we creating? *
                 <select name="project" required defaultValue="">
@@ -352,6 +353,8 @@ export default function CollaboratePage() {
           </div>
         </section>
       </main>
+
+      <a className="back-to-top" href="#top">Back to top ↑</a>
 
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"

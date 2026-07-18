@@ -19,7 +19,7 @@
 }
 
 .collaboration-header {
-  position: absolute;
+  position: fixed;
 }
 
 .collaboration-page .contact {
@@ -181,6 +181,27 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  align-items: end;
+}
+
+.form-row > label {
+  grid-template-rows: minmax(2.4rem, auto) auto;
+  align-content: end;
+}
+
+.inquiry-form label > .field-label {
+  align-self: end;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.inquiry-form .field-label em {
+  color: #756a6d;
+  font-family: var(--sans);
+  font-size: 0.9em;
+  font-style: normal;
+  letter-spacing: 0;
 }
 
 .inquiry-form label {
