@@ -40,82 +40,82 @@
 }
 
 .philosophy::before {
-  left: -15vw;
-  bottom: -24%;
+  left: -8vw;
+  bottom: -15%;
   width: clamp(500px, 46vw, 760px);
-  opacity: 0.042;
+  opacity: 0.095;
   transform: rotate(11deg);
 }
 
 .work::before {
   top: 8%;
-  right: -22vw;
+  right: -12vw;
   width: clamp(520px, 54vw, 900px);
-  opacity: 0.052;
+  opacity: 0.11;
   transform: rotate(-7deg);
 }
 
 .work::after {
-  left: -18vw;
+  left: -10vw;
   bottom: 12%;
   width: clamp(430px, 42vw, 700px);
-  opacity: 0.038;
+  opacity: 0.085;
   transform: rotate(14deg);
 }
 
 .studio-copy::before {
-  top: -18%;
-  right: -23%;
+  top: -10%;
+  right: -15%;
   width: clamp(330px, 31vw, 520px);
-  opacity: 0.045;
+  opacity: 0.1;
   transform: rotate(8deg);
 }
 
 .studio-copy::after {
-  left: -28%;
-  bottom: -25%;
+  left: -20%;
+  bottom: -18%;
   width: clamp(420px, 40vw, 680px);
-  opacity: 0.032;
+  opacity: 0.075;
   transform: rotate(-10deg);
 }
 
 .services::before {
   top: 32%;
-  right: -18vw;
+  right: -11vw;
   width: clamp(480px, 48vw, 760px);
-  opacity: 0.048;
+  opacity: 0.105;
   transform: rotate(8deg);
 }
 
 .services::after {
-  left: -14vw;
-  bottom: -26%;
+  left: -8vw;
+  bottom: -18%;
   width: clamp(370px, 35vw, 580px);
-  opacity: 0.034;
+  opacity: 0.08;
   transform: rotate(-13deg);
 }
 
 .statement::before {
-  right: -13vw;
-  bottom: -42%;
+  right: -8vw;
+  bottom: -25%;
   width: clamp(460px, 43vw, 720px);
-  opacity: 0.045;
+  opacity: 0.095;
   transform: rotate(12deg);
 }
 
 .collaboration-page .contact::before {
-  left: -20vw;
+  left: -12vw;
   top: 18%;
   width: clamp(500px, 52vw, 840px);
-  opacity: 0.04;
+  opacity: 0.09;
   transform: rotate(10deg);
 }
 
 .collaboration-page .contact::after {
-  right: -17vw;
-  bottom: -12rem;
+  right: -10vw;
+  bottom: -8rem;
   width: clamp(430px, 43vw, 690px);
-  opacity: 0.036;
+  opacity: 0.08;
   transform: rotate(-9deg);
 }
 
@@ -126,43 +126,43 @@
 
 @media (max-width: 900px) {
   .philosophy::before {
-    left: -42vw;
+    left: -25vw;
   }
 
   .work::before {
-    right: -42vw;
+    right: -25vw;
   }
 
   .work::after {
-    left: -42vw;
+    left: -25vw;
   }
 
   .studio-copy::before {
-    right: -44%;
+    right: -28%;
   }
 
   .studio-copy::after {
-    left: -48%;
+    left: -30%;
   }
 
   .services::before {
-    right: -42vw;
+    right: -25vw;
   }
 
   .services::after {
-    left: -40vw;
+    left: -24vw;
   }
 
   .statement::before {
-    right: -40vw;
+    right: -24vw;
   }
 
   .collaboration-page .contact::before {
-    left: -45vw;
+    left: -27vw;
   }
 
   .collaboration-page .contact::after {
-    right: -43vw;
+    right: -26vw;
   }
 }
 
@@ -174,19 +174,19 @@
   .services::after,
   .statement::before {
     width: 420px;
-    opacity: 0.03;
+    opacity: 0.06;
   }
 
   .philosophy::before,
   .work::after,
   .services::after {
-    left: -72vw;
+    left: -45vw;
   }
 
   .work::before,
   .services::before,
   .statement::before {
-    right: -72vw;
+    right: -45vw;
   }
 
   .studio-copy::before,
@@ -194,16 +194,16 @@
   .collaboration-page .contact::before,
   .collaboration-page .contact::after {
     width: 390px;
-    opacity: 0.024;
+    opacity: 0.055;
   }
 
   .studio-copy::before,
   .collaboration-page .contact::after {
-    right: -78%;
+    right: -58%;
   }
 
   .studio-copy::after,
   .collaboration-page .contact::before {
-    left: -78%;
+    left: -58%;
   }
 }
