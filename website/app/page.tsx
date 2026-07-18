@@ -118,7 +118,7 @@ export default function Home() {
                   const work = works[workIndex];
                   return <figure className={`work-card work-${workIndex + 1} ${work.format}`} key={work.title}>
                     <div className="image-wrap"><img src={work.src} alt={`${work.title} — ${work.kind}`} /><span>0{workIndex + 1}</span></div>
-                    <figcaption><div><p>{work.kind}</p><h3>{work.title}</h3></div><span>View study ↗</span></figcaption>
+                    <figcaption><div><p>{work.kind}</p><h3>{work.title}</h3></div></figcaption>
                   </figure>;
                 })}
               </div>
@@ -139,7 +139,7 @@ export default function Home() {
 
         <section className="services">
           <div className="section-head compact"><div><p className="eyebrow">04 / Capabilities</p><h2 className="ghost-section-title">Built to create</h2></div><p>For aligned brands, photographers, publications, artists, and audiences.</p></div>
-          <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p><b>↗</b></article>)}</div>
+          <div className="service-list">{services.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
         </section>
 
         <section className="statement">

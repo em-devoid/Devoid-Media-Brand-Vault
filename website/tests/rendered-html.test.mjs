@@ -48,6 +48,8 @@ test("server-renders the Devoid Media homepage", async () => {
   assert.match(html, /come closer, look longer\.\.\. recognize something\./);
   assert.doesNotMatch(html, />Selected work<\/a>/i);
   assert.doesNotMatch(html, /02 \/ Selected work/i);
+  assert.doesNotMatch(html, /View study/i);
+  assert.doesNotMatch(html, /<b>↗<\/b>/);
   assert.match(html, /Where authenticity is beautifully ruthless/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
 });
