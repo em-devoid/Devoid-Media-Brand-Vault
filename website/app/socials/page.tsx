@@ -51,7 +51,7 @@ export default function SocialsPage() {
 
       <main className="socials-page" id="top">
         <section className="socials-hero">
-          <img className="socials-hero-mark" src="/media/logo-mark.png" alt="" />
+          <img className="socials-hero-mark" src="/media/logo-main.png" alt="" />
           <div className="socials-hero-copy">
             <p className="eyebrow">Devoid Media / Socials</p>
             <h1>Find me in<br /><span className="accent-text">the void.</span></h1>

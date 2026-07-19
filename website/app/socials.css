@@ -22,6 +22,7 @@
   display: grid;
   grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
   align-items: center;
+  gap: 3rem;
   min-height: 92vh;
   padding: 10rem 7vw 6rem;
   border-bottom: 1px solid var(--line);
@@ -70,15 +71,15 @@
 .socials-hero-copy .eyebrow,
 .friends-intro .eyebrow {
   display: block;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.8rem;
 }
 
 .socials-hero h1 {
-  margin: 0 0 2rem;
+  margin: 1.2rem 0 2.4rem;
 }
 
 .friends-intro h2 {
-  margin: 0 0 1.9rem;
+  margin: 1.2rem 0 2.2rem;
 }
 
 .socials-hero-copy > p:last-child,
@@ -222,6 +223,12 @@
   z-index: 1;
 }
 
+.friends-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .friends-intro h2 {
   font-size: clamp(3.5rem, 6vw, 6.7rem);
 }
@@ -234,9 +241,12 @@
 
 .friend-card {
   grid-template-columns: auto 1fr auto;
-  min-height: 174px;
+  min-height: 220px;
   border: 1px solid var(--line);
   gap: clamp(1rem, 1.6vw, 1.4rem);
+  padding: clamp(1.5rem, 2.6vw, 3rem);
+  display: grid;
+  align-items: center;
 }
 
 .friend-card .social-icon-wrap {
